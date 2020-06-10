@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:radovis_tour/categories/categories_screen.dart';
+import 'package:radovis_tour/widgets/categories/categories_screen.dart';
 import 'package:radovis_tour/helpers/custom_page_route.dart';
 
 void main() {

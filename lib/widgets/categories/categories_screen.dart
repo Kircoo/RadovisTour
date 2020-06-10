@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:radovis_tour/widgets/categories/categories_bar.dart';
+import 'package:radovis_tour/widgets/categories/categories_body.dart';
 
 class CategoriesScreen extends StatefulWidget {
   static const routeName = '/categories';
@@ -12,10 +14,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          child: Center(
-            child: Text('test'),
-          ),
+        body: CustomScrollView(
+          slivers: [
+            CategoriesBar(),
+            CategoriesBody(),
+          ],
         ),
       ),
     );
