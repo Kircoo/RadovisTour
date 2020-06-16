@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:radovis_tour/helpers/drawer_widget.dart';
 import 'package:radovis_tour/widgets/categories/categories_bar.dart';
 import 'package:radovis_tour/widgets/categories/categories_body.dart';
 
@@ -14,6 +15,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: AppDrawer(),
         body: CustomScrollView(
           slivers: [
             CategoriesBar(),
