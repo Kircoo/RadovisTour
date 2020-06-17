@@ -3,6 +3,7 @@ import 'package:radovis_tour/helpers/drawer_widget.dart';
 import 'package:radovis_tour/widgets/categories/categories_bar.dart';
 import 'package:radovis_tour/widgets/categories/categories_body.dart';
 
+/// Categories Screen
 class CategoriesScreen extends StatefulWidget {
   static const routeName = '/categories';
 

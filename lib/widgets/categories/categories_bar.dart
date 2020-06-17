@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// SliverAppBar Categories
 class CategoriesBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
