@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SubCategories {
-  final int id;
+  final String id;
   final int categoryId;
   final String name;
   final String image;
