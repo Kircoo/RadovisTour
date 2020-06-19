@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:radovis_tour/widgets/about/about_screen.dart';
 
 class AppDrawer extends StatefulWidget {
   @override
@@ -12,6 +13,15 @@ class _AppDrawerState extends State<AppDrawer> {
       child: GestureDetector(
         onTap: function,
         child: Card(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Theme.of(context).primaryColor.withOpacity(0.2),
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
           child: ListTile(
             title: Text(name),
             trailing: Icon(
@@ -67,7 +77,9 @@ class _AppDrawerState extends State<AppDrawer> {
                   children: [
                     _cardBuilder(
                       'About',
-                      () {},
+                      () {
+                        Navigator.of(context).pushNamed(AboutScreen.routeName);
+                      },
                       Icons.location_city,
                     ),
                     _cardBuilder(

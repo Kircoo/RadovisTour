@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:radovis_tour/widgets/about/about_screen.dart';
+import 'package:radovis_tour/widgets/aboutitems/aboutitem_screen.dart';
 import 'package:radovis_tour/widgets/categories/categories_screen.dart';
 import 'package:radovis_tour/helpers/custom_page_route.dart';
 import 'package:radovis_tour/widgets/subcategories/subcategories_screen.dart';
@@ -32,6 +34,8 @@ class MyApp extends StatelessWidget {
         CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
         SubCategoriesScreen.routeName: (ctx) => SubCategoriesScreen(),
         SubItemScreen.routeName: (ctx) => SubItemScreen(),
+        AboutScreen.routeName: (ctx) => AboutScreen(),
+        AboutItemScreen.routeName: (ctx) => AboutItemScreen(),
       },
     );
   }
