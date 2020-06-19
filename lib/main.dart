@@ -4,8 +4,10 @@ import 'package:radovis_tour/widgets/about/about_screen.dart';
 import 'package:radovis_tour/widgets/aboutitems/aboutitem_screen.dart';
 import 'package:radovis_tour/widgets/categories/categories_screen.dart';
 import 'package:radovis_tour/helpers/custom_page_route.dart';
+import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
 import 'package:radovis_tour/widgets/subcategories/subcategories_screen.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
+import 'package:radovis_tour/widgets/visited/visited_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,6 +38,8 @@ class MyApp extends StatelessWidget {
         SubItemScreen.routeName: (ctx) => SubItemScreen(),
         AboutScreen.routeName: (ctx) => AboutScreen(),
         AboutItemScreen.routeName: (ctx) => AboutItemScreen(),
+        FavoriteScreen.routeName: (ctx) => FavoriteScreen(),
+        VisitedScreen.routeName: (ctx) => VisitedScreen(),
       },
     );
   }

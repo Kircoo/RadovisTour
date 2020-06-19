@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:radovis_tour/data/favorites_list.dart';
+import 'package:radovis_tour/data/visited_list.dart';
 import 'package:radovis_tour/widgets/about/about_screen.dart';
+import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
+import 'package:radovis_tour/widgets/visited/visited_screen.dart';
 
 class AppDrawer extends StatefulWidget {
   @override
@@ -7,7 +11,12 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  Widget _cardBuilder(String name, Function function, IconData iconData) {
+  Widget _cardBuilder(
+    String name,
+    Function function,
+    IconData iconData, {
+    int lenght,
+  }) {
     return Padding(
       padding: const EdgeInsets.all(6.0),
       child: GestureDetector(
@@ -23,10 +32,13 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
           ),
           child: ListTile(
-            title: Text(name),
-            trailing: Icon(
+            leading: Icon(
               iconData,
               color: Colors.black,
+            ),
+            title: Text(name),
+            trailing: Text(
+              lenght == null ? '' : lenght.toString(),
             ),
           ),
         ),
@@ -83,14 +95,22 @@ class _AppDrawerState extends State<AppDrawer> {
                       Icons.location_city,
                     ),
                     _cardBuilder(
-                      'Favorite',
-                      () {},
+                      'Favorites',
+                      () {
+                        Navigator.of(context)
+                            .pushNamed(FavoriteScreen.routeName);
+                      },
                       Icons.favorite,
+                      lenght: favoritesList.length,
                     ),
                     _cardBuilder(
                       'Visited',
-                      () {},
+                      () {
+                        Navigator.of(context)
+                            .pushNamed(VisitedScreen.routeName);
+                      },
                       Icons.remove_red_eye,
+                      lenght: visitedList.length,
                     ),
                     _cardBuilder(
                       'Weather',
