@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:radovis_tour/provider/weather_provider.dart';
 import 'package:radovis_tour/widgets/about/about_screen.dart';
 import 'package:radovis_tour/widgets/aboutitems/aboutitem_screen.dart';
 import 'package:radovis_tour/widgets/categories/categories_screen.dart';
@@ -10,7 +12,16 @@ import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
 import 'package:radovis_tour/widgets/visited/visited_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Weather(),
+        )
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 /// Class To Run

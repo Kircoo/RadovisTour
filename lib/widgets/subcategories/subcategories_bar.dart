@@ -57,7 +57,7 @@ class _SubCategiresBarState extends State<SubCategiresBar> {
           ),
         ],
       ),
-      expandedHeight: 250,
+      expandedHeight: 150,
     );
   }
 }
