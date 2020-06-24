@@ -4,6 +4,7 @@ import 'package:radovis_tour/data/visited_list.dart';
 import 'package:radovis_tour/widgets/about/about_screen.dart';
 import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
 import 'package:radovis_tour/widgets/visited/visited_screen.dart';
+import 'package:radovis_tour/widgets/weather/weather_screen.dart';
 
 class AppDrawer extends StatefulWidget {
   @override
@@ -114,7 +115,10 @@ class _AppDrawerState extends State<AppDrawer> {
                     ),
                     _cardBuilder(
                       'Weather',
-                      () {},
+                      () {
+                        Navigator.of(context)
+                            .pushNamed(WeatherScreen.routeName);
+                      },
                       Icons.cloud,
                     ),
                   ],

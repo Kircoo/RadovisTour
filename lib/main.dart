@@ -10,6 +10,7 @@ import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
 import 'package:radovis_tour/widgets/subcategories/subcategories_screen.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
 import 'package:radovis_tour/widgets/visited/visited_screen.dart';
+import 'package:radovis_tour/widgets/weather/weather_screen.dart';
 
 void main() {
   runApp(
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         AboutItemScreen.routeName: (ctx) => AboutItemScreen(),
         FavoriteScreen.routeName: (ctx) => FavoriteScreen(),
         VisitedScreen.routeName: (ctx) => VisitedScreen(),
+        WeatherScreen.routeName: (ctx) => WeatherScreen(),
       },
     );
   }

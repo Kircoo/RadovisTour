@@ -7,6 +7,7 @@ import 'package:radovis_tour/widgets/categories/categories_bar.dart';
 import 'package:radovis_tour/widgets/categories/categories_body.dart';
 import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
 import 'package:radovis_tour/widgets/visited/visited_screen.dart';
+import 'package:radovis_tour/widgets/weather/weather_screen.dart';
 
 /// Categories Screen
 class CategoriesScreen extends StatefulWidget {
@@ -52,10 +53,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ),
               CircularMenuItem(
                 onTap: () {
-                  theFunc.getWeather(
-                    10,
-                    22,
-                  );
+                  Navigator.of(context).pushNamed(WeatherScreen.routeName);
                 },
                 icon: Icons.cloud,
                 color: Theme.of(context).primaryColor,
