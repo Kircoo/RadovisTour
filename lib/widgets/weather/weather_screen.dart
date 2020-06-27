@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:radovis_tour/provider/weather_provider.dart';
+import 'package:radovis_tour/widgets/weather/moon_pahase.dart';
+import 'package:radovis_tour/widgets/weather/weather_svg.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -24,6 +26,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
       padding:
           const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0, bottom: 0.0),
       child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: Theme.of(context).primaryColor.withOpacity(0.2),
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
         child: ListTile(
           leading: Icon(
             icon,
@@ -66,85 +77,100 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   : Column(
                       children: [
                         Container(
+                          decoration: BoxDecoration(
+                            color: Colors.lightBlueAccent.withOpacity(0.2),
+                            borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(25),
+                              bottomLeft: Radius.circular(25),
+                            ),
+                          ),
                           height: 200,
-                          color: Colors.green,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.location_on),
-                                    Text('Radovish'),
-                                  ],
+                            child: Card(
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  color: Theme.of(context)
+                                      .primaryColor
+                                      .withOpacity(0.2),
                                 ),
-                                Text(
-                                  DateFormat.yMMMEd().format(
-                                    DateTime.now(),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.location_on),
+                                      Text('Radovish'),
+                                    ],
                                   ),
-                                ),
-                                Text(DateFormat()
-                                    .add_Hm()
-                                    .format(DateTime.now())
-                                    .toString()),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      'assets/images/weather/clear_day.svg',
-                                      height: 60,
+                                  Text(
+                                    DateFormat.yMMMEd().format(
+                                      DateTime.now(),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 10),
-                                      child: Text(
-                                        '${theItems.temp.toStringAsFixed(0)}°',
-                                        style: TextStyle(fontSize: 40),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text('test')
-                              ],
+                                  ),
+                                  Text(DateFormat()
+                                      .add_Hm()
+                                      .format(DateTime.now())
+                                      .toString()),
+                                  WeatherSvg(
+                                    '${theItems.temp.toStringAsFixed(0)}°',
+                                    theItems.weatherCode.toString(),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            child: Column(
-                              children: [
-                                _weatherCard(
-                                  WeatherIcons.thermometer,
-                                  'Temperature',
-                                  '${theItems.temp.toStringAsFixed(0)}°',
-                                  Colors.red,
-                                ),
-                                _weatherCard(
-                                  WeatherIcons.thermometer_exterior,
-                                  'Feels Like',
-                                  '${theItems.feelsLike.toStringAsFixed(0)}°',
-                                  Colors.red,
-                                ),
-                                _weatherCard(
-                                  WeatherIcons.sunrise,
-                                  'Sunrise',
-                                  '${DateFormat().add_Hm().format(DateTime.parse(theItems.sunrise)).toString()}',
-                                  Colors.yellow,
-                                ),
-                                _weatherCard(
-                                  WeatherIcons.sunset,
-                                  'Sunrise',
-                                  '${DateFormat().add_Hm().format(DateTime.parse(theItems.sunset)).toString()}',
-                                  Colors.yellow,
-                                ),
-                                _weatherCard(
-                                  WeatherIcons.humidity,
-                                  'Humidity',
-                                  '${theItems.humidity.toStringAsFixed(0)}%',
-                                  Colors.blueAccent,
-                                ),
-                              ],
+                          child: SingleChildScrollView(
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  _weatherCard(
+                                    WeatherIcons.thermometer,
+                                    'Temperature',
+                                    '${theItems.temp.toStringAsFixed(0)}°',
+                                    Colors.red,
+                                  ),
+                                  _weatherCard(
+                                    WeatherIcons.thermometer_exterior,
+                                    'Feels Like',
+                                    '${theItems.feelsLike.toStringAsFixed(0)}°',
+                                    Colors.red,
+                                  ),
+                                  _weatherCard(
+                                    WeatherIcons.sunrise,
+                                    'Sunrise',
+                                    '${DateFormat().add_Hm().format(DateTime.parse(theItems.sunrise)).toString()}',
+                                    Colors.yellow,
+                                  ),
+                                  _weatherCard(
+                                    WeatherIcons.sunset,
+                                    'Sunrise',
+                                    '${DateFormat().add_Hm().format(DateTime.parse(theItems.sunset)).toString()}',
+                                    Colors.yellow,
+                                  ),
+                                  _weatherCard(
+                                    WeatherIcons.humidity,
+                                    'Humidity',
+                                    '${theItems.humidity.toStringAsFixed(0)}%',
+                                    Colors.blueAccent,
+                                  ),
+                                  MoonPhase(
+                                    WeatherIcons.moon_alt_waning_crescent_3,
+                                    'Moon Phase',
+                                    '${theItems.moonPhase.toString()}',
+                                    Colors.brown,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

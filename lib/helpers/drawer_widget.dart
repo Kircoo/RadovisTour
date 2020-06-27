@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:radovis_tour/data/favorites_list.dart';
 import 'package:radovis_tour/data/visited_list.dart';
+import 'package:radovis_tour/helpers/db_helper.dart';
 import 'package:radovis_tour/widgets/about/about_screen.dart';
 import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
 import 'package:radovis_tour/widgets/visited/visited_screen.dart';
@@ -47,8 +47,31 @@ class _AppDrawerState extends State<AppDrawer> {
     );
   }
 
+  int theNumberFav = -1;
+  int theNumberVis = -1;
+
+  countFav() async {
+    int count = await DBS.countItems('favorites');
+    if (mounted) {
+      setState(() {
+        theNumberFav = count;
+      });
+    }
+  }
+
+  countVis() async {
+    int count = await DBS.countItems('visited');
+    if (mounted) {
+      setState(() {
+        theNumberVis = count;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    countFav();
+    countVis();
     return Drawer(
       child: Column(
         children: [
@@ -74,9 +97,10 @@ class _AppDrawerState extends State<AppDrawer> {
                     top: 7,
                   ),
                   child: Text(
-                    'Temterature',
+                    'Radovish Tour',
                     style: TextStyle(
                       fontSize: 20,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -102,7 +126,7 @@ class _AppDrawerState extends State<AppDrawer> {
                             .pushNamed(FavoriteScreen.routeName);
                       },
                       Icons.favorite,
-                      lenght: favoritesList.length,
+                      lenght: theNumberFav,
                     ),
                     _cardBuilder(
                       'Visited',
@@ -111,7 +135,7 @@ class _AppDrawerState extends State<AppDrawer> {
                             .pushNamed(VisitedScreen.routeName);
                       },
                       Icons.remove_red_eye,
-                      lenght: visitedList.length,
+                      lenght: theNumberVis,
                     ),
                     _cardBuilder(
                       'Weather',

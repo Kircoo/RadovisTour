@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:radovis_tour/data/favorites_list.dart';
+import 'package:radovis_tour/helpers/db_helper.dart';
+import 'package:radovis_tour/provider/data_provider.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -18,33 +21,69 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           title: Text('Favorites'),
         ),
         body: Container(
-          child: ListView.builder(
-            itemBuilder: (ctx, index) => Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed(SubItemScreen.routeName,
-                      arguments: favoritesList[index].id);
-                },
-                child: Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      color: Theme.of(context).primaryColor.withOpacity(0.2),
+          child: FutureBuilder(
+            future: Provider.of<DataProvider>(context, listen: false)
+                .fetchFavorites(),
+            builder: (ctx, snapshot) => favoritesList.isEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Your favorite list is empty!'),
+                        Icon(Icons.sentiment_dissatisfied),
+                      ],
                     ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
+                  )
+                : ListView.builder(
+                    itemBuilder: (ctx, index) => Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                              SubItemScreen.routeName,
+                              arguments: favoritesList[index].id);
+                        },
+                        child: Card(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Theme.of(context)
+                                  .primaryColor
+                                  .withOpacity(0.2),
+                            ),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              favoritesList[index].name,
+                            ),
+                            trailing: Builder(
+                              builder: (context) => IconButton(
+                                icon: Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    DBS.delete(
+                                      'Favorites',
+                                      favoritesList[index].id,
+                                      '${favoritesList[index].name}',
+                                      'Favorites',
+                                      context,
+                                    );
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
+                    itemCount: favoritesList.length,
                   ),
-                  child: ListTile(
-                    title: Text(
-                      favoritesList[index].name,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            itemCount: favoritesList.length,
           ),
         ),
       ),
