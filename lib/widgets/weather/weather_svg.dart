@@ -57,36 +57,61 @@ class WeatherSvg extends StatelessWidget {
                                 ? _columnReturn('freezing_drizzle',
                                     'Light freezing rain falling in fine pieces')
                                 : (weatherCode == 'drizzle'
-                                    ? _columnReturn(
-                                        'drizzle', 'Light rain falling in very fine drops')
+                                    ? _columnReturn('drizzle',
+                                        'Light rain falling in very fine drops')
                                     : (weatherCode == 'ice_pellets_heavy'
-                                        ? _columnReturn(
-                                            'ice_pellets_heavy', 'Substantial ice pellets')
+                                        ? _columnReturn('ice_pellets_heavy',
+                                            'Substantial ice pellets')
                                         : (weatherCode == 'ice_pellets'
                                             ? _columnReturn(
                                                 'ice_pellets', 'Ice pellets')
-                                            : (weatherCode == 'ice_pellets_light'
+                                            : (weatherCode ==
+                                                    'ice_pellets_light'
                                                 ? _columnReturn(
                                                     'ice_pellets_light',
                                                     'Light ice pellets')
                                                 : (weatherCode == 'snow_heavy'
                                                     ? _columnReturn(
-                                                        'snow_heavy', 'Substantial snow')
+                                                        'snow_heavy',
+                                                        'Substantial snow')
                                                     : (weatherCode == 'snow'
                                                         ? _columnReturn(
                                                             'snow', 'Snow')
-                                                        : (weatherCode == 'snow_light'
+                                                        : (weatherCode ==
+                                                                'snow_light'
                                                             ? _columnReturn(
-                                                                'snow_light', 'Light snow')
-                                                            : (weatherCode == 'flurries'
+                                                                'snow_light',
+                                                                'Light snow')
+                                                            : (weatherCode ==
+                                                                    'flurries'
                                                                 ? _columnReturn(
                                                                     'flurries',
                                                                     'Flurries')
-                                                                : (weatherCode == 'tstorm'
+                                                                : (weatherCode ==
+                                                                        'tstorm'
                                                                     ? _columnReturn(
-                                                                        'tstorm', 'Thunderstorm conditions')
-                                                                    : (weatherCode == 'fog_light'
-                                                                        ? _columnReturn('fog_light', 'Light fog')
-                                                                        : (weatherCode == 'fog' ? _columnReturn('fog', 'Fog') : (weatherCode == 'cloudy' ? _columnReturn('cloudy', 'Cloudy') : (weatherCode == 'mostly_cloudy' ? _columnReturn('mostly_cloudy', 'Mostly cloudy') : (weatherCode == 'partly_cloudy' ? _columnReturn(DateTime.now().hour > 6 || DateTime.now().hour < 18 ? 'partly_cloudy_day' : 'partly_cloudy_night', 'Partly cloudy') : (weatherCode == 'mostly_clear' ? _columnReturn(DateTime.now().hour > 6 || DateTime.now().hour < 18 ? 'mostly_clear_day' : 'mostly_clear_night', 'Mostly clear') : _columnReturn(DateTime.now().hour > 6 || DateTime.now().hour < 18 ? 'clear_day' : 'clear_night', DateTime.now().hour > 6 || DateTime.now().hour < 18 ? 'Sunny' : 'Clear'))))))))))))))))))))));
+                                                                        'tstorm',
+                                                                        'Thunderstorm conditions')
+                                                                    : (weatherCode ==
+                                                                            'fog_light'
+                                                                        ? _columnReturn(
+                                                                            'fog_light',
+                                                                            'Light fog')
+                                                                        : (weatherCode ==
+                                                                                'fog'
+                                                                            ? _columnReturn('fog',
+                                                                                'Fog')
+                                                                            : (weatherCode == 'cloudy'
+                                                                                ? _columnReturn('cloudy', 'Cloudy')
+                                                                                : (weatherCode == 'mostly_cloudy'
+                                                                                    ? _columnReturn('mostly_cloudy', 'Mostly cloudy')
+                                                                                    : (weatherCode == 'partly_cloudy'
+                                                                                        ? _columnReturn(DateTime.now().hour > 6 || DateTime.now().hour < 18 ? 'partly_cloudy_day' : 'partly_cloudy_night', 'Partly cloudy')
+                                                                                        : (weatherCode == 'mostly_clear'
+                                                                                            ? _columnReturn(DateTime.now().hour > 6 && DateTime.now().hour < 18 ? 'mostly_clear_day' : 'mostly_clear_night', 'Mostly clear')
+                                                                                            : _columnReturn(
+                                                                                                DateTime.now().hour > 6 && DateTime.now().hour < 18 ? 'clear_day' : 'clear_night',
+                                                                                                DateTime.now().hour > 6 && DateTime.now().hour < 18 ? 'Sunny' : 'Clear',
+                                                                                              ))))))))))))))))))))));
   }
 }

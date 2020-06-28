@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'package:provider/provider.dart';
 import 'package:radovis_tour/provider/data_provider.dart';
 import 'package:radovis_tour/provider/weather_provider.dart';
@@ -47,7 +48,20 @@ class MyApp extends StatelessWidget {
           },
         ),
       ),
-      home: HomePageApp(),
+      home: SplashScreen(
+        seconds: 8,
+        backgroundColor: Color(0xFFFFFFFF),
+        image: Image.asset('assets/citygif.gif'),
+        photoSize: 210.0,
+        loaderColor: Colors.black,
+        loadingText: Text(
+          'Loading...',
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        ),
+        navigateAfterSeconds: HomePageApp(),
+      ),
       routes: {
         CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
         SubCategoriesScreen.routeName: (ctx) => SubCategoriesScreen(),

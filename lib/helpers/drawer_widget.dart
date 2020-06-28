@@ -17,6 +17,7 @@ class _AppDrawerState extends State<AppDrawer> {
     Function function,
     IconData iconData, {
     int lenght,
+    Color color,
   }) {
     return Padding(
       padding: const EdgeInsets.all(6.0),
@@ -35,7 +36,7 @@ class _AppDrawerState extends State<AppDrawer> {
           child: ListTile(
             leading: Icon(
               iconData,
-              color: Colors.black,
+              color: color,
             ),
             title: Text(name),
             trailing: Text(
@@ -118,6 +119,7 @@ class _AppDrawerState extends State<AppDrawer> {
                         Navigator.of(context).pushNamed(AboutScreen.routeName);
                       },
                       Icons.location_city,
+                      color: Colors.brown,
                     ),
                     _cardBuilder(
                       'Favorites',
@@ -127,6 +129,7 @@ class _AppDrawerState extends State<AppDrawer> {
                       },
                       Icons.favorite,
                       lenght: theNumberFav,
+                      color: Colors.red
                     ),
                     _cardBuilder(
                       'Visited',
@@ -136,6 +139,7 @@ class _AppDrawerState extends State<AppDrawer> {
                       },
                       Icons.remove_red_eye,
                       lenght: theNumberVis,
+                      color: Colors.blueAccent
                     ),
                     _cardBuilder(
                       'Weather',
@@ -144,6 +148,7 @@ class _AppDrawerState extends State<AppDrawer> {
                             .pushNamed(WeatherScreen.routeName);
                       },
                       Icons.cloud,
+                      color: Colors.lightBlueAccent
                     ),
                   ],
                 ),

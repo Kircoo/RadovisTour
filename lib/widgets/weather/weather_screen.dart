@@ -64,7 +64,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Container(
                   child: Center(
-                    child: CircularProgressIndicator(),
+                    child: Image.asset('assets/weathergif.gif', height: 200,),
                   ),
                 );
               }
