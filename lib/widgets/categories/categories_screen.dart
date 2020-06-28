@@ -1,8 +1,6 @@
 import 'package:circular_menu/circular_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:radovis_tour/helpers/drawer_widget.dart';
-import 'package:radovis_tour/provider/weather_provider.dart';
 import 'package:radovis_tour/widgets/categories/categories_bar.dart';
 import 'package:radovis_tour/widgets/categories/categories_body.dart';
 import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
@@ -20,8 +18,6 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
-    final theFunc = Provider.of<Weather>(context, listen: false);
-
     return SafeArea(
       child: Scaffold(
         drawer: AppDrawer(),

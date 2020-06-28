@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:radovis_tour/data/visited_list.dart';
 import 'package:radovis_tour/helpers/db_helper.dart';
 import 'package:radovis_tour/widgets/about/about_screen.dart';
 import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';

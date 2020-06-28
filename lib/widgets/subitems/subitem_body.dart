@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:radovis_tour/data/subitem_list.dart';
-import 'package:radovis_tour/helpers/db_helper.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_details.dart';
 
 class SubItemBody extends StatefulWidget {
