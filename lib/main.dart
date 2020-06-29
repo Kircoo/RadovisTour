@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: SplashScreen(
-        seconds: 8,
+        seconds: 7,
         backgroundColor: Color(0xFFFFFFFF),
         image: Image.asset('assets/citygif.gif'),
         photoSize: 210.0,
