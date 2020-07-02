@@ -13,6 +13,7 @@ class VisitedScreen extends StatefulWidget {
 }
 
 class _VisitedScreenState extends State<VisitedScreen> {
+  final GlobalKey<AnimatedListState> _keyVisited = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -34,59 +35,78 @@ class _VisitedScreenState extends State<VisitedScreen> {
                       ],
                     ),
                   )
-                : ListView.builder(
-                    itemBuilder: (ctx, index) => Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(
-                              SubItemScreen.routeName,
-                              arguments: visitedList[index].id);
-                        },
-                        child: Card(
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.2),
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20),
-                            ),
-                          ),
-                          child: ListTile(
-                            title: Text(
-                              visitedList[index].name,
-                            ),
-                            trailing: Builder(
-                              builder: (context) => IconButton(
-                                icon: Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    DBS.delete(
-                                      'visited',
-                                      visitedList[index].id,
-                                      '${visitedList[index].name}',
-                                      'Visited',
-                                      context,
-                                    );
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    itemCount: visitedList.length,
+                : AnimatedList(
+                    key: _keyVisited,
+                    itemBuilder: (ctx, index, animation) =>
+                        _buildItem(visitedList[index].name, index, animation),
+                    initialItemCount: visitedList.length,
                   ),
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildItem(
+    String item,
+    int index,
+    Animation animation,
+  ) {
+    return ScaleTransition(
+      scale: animation,
+      child: Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(SubItemScreen.routeName,
+                arguments: visitedList[index].id);
+          },
+          child: Card(
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                color: Theme.of(context).primaryColor.withOpacity(0.2),
+              ),
+              borderRadius: BorderRadius.all(
+                Radius.circular(20),
+              ),
+            ),
+            child: ListTile(
+              title: Text(
+                item,
+              ),
+              trailing: Builder(
+                builder: (context) => IconButton(
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
+                  onPressed: () {
+                    _removeItem(index);
+                    setState(() {
+                      DBS.delete(
+                        'visited',
+                        visitedList[index].id,
+                        '${visitedList[index].name}',
+                        'Favorites',
+                        context,
+                      );
+                    });
+                  },
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+    void _removeItem(int i) {
+    String removeItem = visitedList[i].name;
+    AnimatedListRemovedItemBuilder builder = (context, animation) {
+      return _buildItem(removeItem, i, animation);
+    };
+    _keyVisited.currentState.removeItem(i, builder);
   }
 }
