@@ -17,13 +17,11 @@ class MoonPhase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0, bottom: 0.0),
+      padding:
+          const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0, bottom: 8.0),
       child: Card(
-        elevation: 5,
+        color: Colors.white.withOpacity(0.4),
         shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: Theme.of(context).primaryColor.withOpacity(0.2),
-          ),
           borderRadius: BorderRadius.all(
             Radius.circular(20),
           ),

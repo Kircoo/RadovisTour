@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 import 'package:radovis_tour/helpers/db_helper.dart';
 
 class SubItemDetails extends StatefulWidget {
   final String id;
   final String name;
   final String desc;
+  final double lon;
+  final double lat;
 
   SubItemDetails({
     @required this.id,
     @required this.name,
     @required this.desc,
+    @required this.lon,
+    @required this.lat,
   });
 
   @override
@@ -140,7 +145,8 @@ class _SubItemDetailsState extends State<SubItemDetails> {
                       height: 50,
                       width: 50,
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () => MapsLauncher.launchCoordinates(
+                            widget.lon, widget.lat, '${widget.name}'),
                         child: Icon(
                           Icons.map,
                           color: Colors.white,

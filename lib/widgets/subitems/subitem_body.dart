@@ -21,6 +21,8 @@ class _SubItemBodyState extends State<SubItemBody> {
           id: selectedSubItem.subCategoryId,
           name: selectedSubItem.name,
           desc: selectedSubItem.description,
+          lon: selectedSubItem.lon,
+          lat: selectedSubItem.lat,
         ),
       ),
     );

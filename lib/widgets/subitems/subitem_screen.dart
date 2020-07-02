@@ -9,17 +9,56 @@ class SubItemScreen extends StatefulWidget {
 }
 
 class _SubItemScreenState extends State<SubItemScreen> {
+  ScrollController _scrollController = ScrollController();
+
+  bool showFab = false;
+
+  @override
+  void initState() {
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels > 150) {
+        setState(() {
+          showFab = true;
+        });
+      } else if (_scrollController.position.pixels == 0) {
+        setState(() {
+          showFab = false;
+        });
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
+          controller: _scrollController,
           slivers: [
             SubItemBar(),
             SubItemBody(),
           ],
         ),
+        floatingActionButton: !showFab
+            ? null
+            : FloatingActionButton(
+                backgroundColor: Theme.of(context).primaryColor,
+                mini: true,
+                onPressed: () {
+                  _scrollController.animateTo(0,
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.linear);
+                },
+                child: Icon(Icons.arrow_drop_up),
+              ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 }

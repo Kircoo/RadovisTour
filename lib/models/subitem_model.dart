@@ -5,13 +5,15 @@ class SubItem {
   String name;
   String subCategoryId;
   String description;
-  // double lat;
-  // double lon;
+  double lat;
+  double lon;
 
   SubItem({
     @required this.id,
     @required this.name,
     @required this.subCategoryId,
     @required this.description,
+    @required this.lat,
+    @required this.lon,
   });
 }

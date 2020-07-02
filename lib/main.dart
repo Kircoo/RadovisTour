@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:provider/provider.dart';
@@ -15,17 +16,20 @@ import 'package:radovis_tour/widgets/visited/visited_screen.dart';
 import 'package:radovis_tour/widgets/weather/weather_screen.dart';
 
 void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(
-          value: Weather(),
-        ),
-        ChangeNotifierProvider.value(
-          value: DataProvider(),
-        ),
-      ],
-      child: MyApp(),
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
+    (value) => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(
+            value: Weather(),
+          ),
+          ChangeNotifierProvider.value(
+            value: DataProvider(),
+          ),
+        ],
+        child: MyApp(),
+      ),
     ),
   );
 }
@@ -48,19 +52,29 @@ class MyApp extends StatelessWidget {
           },
         ),
       ),
-      home: SplashScreen(
-        seconds: 7,
-        backgroundColor: Color(0xFFFFFFFF),
-        image: Image.asset('assets/citygif.gif'),
-        photoSize: 210.0,
-        loaderColor: Colors.black,
-        loadingText: Text(
-          'Loading...',
-          style: TextStyle(
-            fontSize: 20,
+      home: SafeArea(
+        child: SplashScreen(
+          seconds: 3,
+          backgroundColor: Color(0xFF990000),
+          image: Image.asset('assets/logo.png'),
+          title: Text(
+            'Radovish Tour',
+            style: TextStyle(
+              fontSize: 40,
+              color: Colors.white,
+            ),
           ),
+          photoSize: 100.0,
+          loaderColor: Colors.white,
+          loadingText: Text(
+            'Loading...',
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+            ),
+          ),
+          navigateAfterSeconds: HomePageApp(),
         ),
-        navigateAfterSeconds: HomePageApp(),
       ),
       routes: {
         CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
