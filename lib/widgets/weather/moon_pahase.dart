@@ -17,8 +17,9 @@ class MoonPhase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0, bottom: 8.0),
+      padding: const EdgeInsets.all(
+        8.0,
+      ),
       child: Card(
         color: Colors.white.withOpacity(0.4),
         shape: RoundedRectangleBorder(
@@ -32,21 +33,30 @@ class MoonPhase extends StatelessWidget {
             color: color,
           ),
           title: Text(name),
-          trailing: Icon(item == 'new_moon'
-              ? WeatherIcons.moon_alt_new
-              : (item == 'waxing_crescent'
-                  ? WeatherIcons.moon_alt_waxing_crescent_1
-                  : (item == 'waning_crescent'
-                      ? WeatherIcons.moon_alt_waning_crescent_1
-                      : (item == 'first_quarter'
-                          ? WeatherIcons.moon_alt_first_quarter
-                          : (item == 'third_quarter'
-                              ? WeatherIcons.moon_alt_third_quarter
-                              : (item == 'waxing_gibbous'
-                                  ? WeatherIcons.moon_alt_waxing_gibbous_1
-                                  : (item == 'waning_gibbous'
-                                      ? WeatherIcons.moon_alt_waning_gibbous_1
-                                      : WeatherIcons.moon_alt_full))))))),
+          trailing: Padding(
+            padding: const EdgeInsets.only(
+              bottom: 15,
+            ),
+            child: Icon(
+              item == 'new_moon'
+                  ? WeatherIcons.moon_alt_new
+                  : (item == 'waxing_crescent'
+                      ? WeatherIcons.moon_alt_waxing_crescent_1
+                      : (item == 'waning_crescent'
+                          ? WeatherIcons.moon_alt_waning_crescent_1
+                          : (item == 'first_quarter'
+                              ? WeatherIcons.moon_alt_first_quarter
+                              : (item == 'third_quarter'
+                                  ? WeatherIcons.moon_alt_third_quarter
+                                  : (item == 'waxing_gibbous'
+                                      ? WeatherIcons.moon_alt_waxing_gibbous_1
+                                      : (item == 'waning_gibbous'
+                                          ? WeatherIcons
+                                              .moon_alt_waning_gibbous_1
+                                          : WeatherIcons.moon_alt_full)))))),
+              size: 30,
+            ),
+          ),
         ),
       ),
     );
