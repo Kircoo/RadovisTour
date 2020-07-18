@@ -37,23 +37,6 @@ class CategoriesBar extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              bottom: 10.0,
-            ),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                'Radovish Tour',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 2,
-                  fontSize: 30,
-                ),
-              ),
-            ),
-          ),
         ],
       ),
       expandedHeight: 150,

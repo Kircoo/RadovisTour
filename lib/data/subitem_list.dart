@@ -6,7 +6,7 @@ final List<SubItem> subItems = [
       name: 'Radovish Cross',
       subCategoryId: 's1',
       description:
-          'This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! ',
+          'This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! This is a CROSS! ',
       lon: 41.636561,
       lat: 22.459556),
   SubItem(
@@ -16,5 +16,13 @@ final List<SubItem> subItems = [
     description: 'This is a CHURCH!',
     lon: 41.635079,
     lat: 22.467716,
+  ),
+  SubItem(
+    id: 'i3',
+    name: 'Radovish Square St.Spaso',
+    subCategoryId: 's3',
+    description: 'This is a SQUARE!',
+    lon: 41.638768,
+    lat: 22.460717,
   ),
 ];

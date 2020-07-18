@@ -32,6 +32,22 @@ class _AboutBarState extends State<AboutBar> {
               ),
             ),
           ),
+                    Padding(
+            padding: const EdgeInsets.only(
+              bottom: 10.0,
+              right: 10.0,
+            ),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                'About',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
       expandedHeight: 150,

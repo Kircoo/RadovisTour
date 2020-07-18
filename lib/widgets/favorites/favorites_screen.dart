@@ -15,6 +15,24 @@ class FavoriteScreen extends StatefulWidget {
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
   final GlobalKey<AnimatedListState> _keyFavorite = GlobalKey();
+  var _isInit = true;
+  var _isLoading = true;
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+      Provider.of<DataProvider>(context).fetchFavorites().then((_) {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,26 +42,30 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           title: Text('Favorites'),
         ),
         body: Container(
-          child: FutureBuilder(
-            future: Provider.of<DataProvider>(context, listen: false)
-                .fetchFavorites(),
-            builder: (ctx, snapshot) => favoritesList.isEmpty
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Your favorite list is empty!'),
-                        Icon(Icons.sentiment_dissatisfied),
-                      ],
-                    ),
-                  )
-                : AnimatedList(
-                    key: _keyFavorite,
-                    itemBuilder: (ctx, index, animation) =>
-                        _buildItem(favoritesList[index].name, index, animation),
-                    initialItemCount: favoritesList.length,
-                  ),
-          ),
+          child: _isLoading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : FutureBuilder(
+                  future: Provider.of<DataProvider>(context, listen: false)
+                      .fetchFavorites(),
+                  builder: (ctx, snapshot) => favoritesList.isEmpty
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Your favorite list is empty!'),
+                              Icon(Icons.sentiment_dissatisfied),
+                            ],
+                          ),
+                        )
+                      : AnimatedList(
+                          key: _keyFavorite,
+                          itemBuilder: (ctx, index, animation) => _buildItem(
+                              favoritesList[index].name, index, animation),
+                          initialItemCount: favoritesList.length,
+                        ),
+                ),
         ),
       ),
     );

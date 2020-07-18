@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:splashscreen/splashscreen.dart';
+import 'package:radovis_tour/widgets/map/maps.dart';
 import 'package:provider/provider.dart';
 import 'package:radovis_tour/provider/data_provider.dart';
 import 'package:radovis_tour/provider/weather_provider.dart';
@@ -53,28 +53,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: SafeArea(
-        child: SplashScreen(
-          seconds: 3,
-          backgroundColor: Color(0xFF990000),
-          image: Image.asset('assets/logo.png'),
-          title: Text(
-            'Radovish Tour',
-            style: TextStyle(
-              fontSize: 40,
-              color: Colors.white,
-            ),
-          ),
-          photoSize: 100.0,
-          loaderColor: Colors.white,
-          loadingText: Text(
-            'Loading...',
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),
-          ),
-          navigateAfterSeconds: HomePageApp(),
-        ),
+        child: HomePageApp(),
       ),
       routes: {
         CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
@@ -85,6 +64,7 @@ class MyApp extends StatelessWidget {
         FavoriteScreen.routeName: (ctx) => FavoriteScreen(),
         VisitedScreen.routeName: (ctx) => VisitedScreen(),
         WeatherScreen.routeName: (ctx) => WeatherScreen(),
+        RadovisMaps.routeName: (ctx) => RadovisMaps(),
       },
     );
   }

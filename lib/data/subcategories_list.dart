@@ -13,4 +13,10 @@ final List<SubCategories> subcategories = [
     image: 'assets/images/subcategories/church.jpg',
     name: 'St. Holy Trinity Church',
   ),
+  SubCategories(
+    id: 's3',
+    categoryId: 1,
+    image: 'assets/images/subcategories/radovissquare.jpg',
+    name: 'Radovish Square St.Spaso',
+  ),
 ];

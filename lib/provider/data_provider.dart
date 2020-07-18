@@ -33,5 +33,6 @@ class DataProvider with ChangeNotifier {
           ),
         )
         .toList();
+    notifyListeners();
   }
 }

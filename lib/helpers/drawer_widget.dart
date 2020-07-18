@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:radovis_tour/helpers/db_helper.dart';
 import 'package:radovis_tour/widgets/about/about_screen.dart';
 import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
+import 'package:radovis_tour/widgets/map/maps.dart';
 import 'package:radovis_tour/widgets/visited/visited_screen.dart';
 import 'package:radovis_tour/widgets/weather/weather_screen.dart';
 
@@ -128,7 +129,7 @@ class _AppDrawerState extends State<AppDrawer> {
                       },
                       Icons.favorite,
                       lenght: theNumberFav,
-                      color: Colors.red
+                      color: Colors.red,
                     ),
                     _cardBuilder(
                       'Visited',
@@ -138,7 +139,7 @@ class _AppDrawerState extends State<AppDrawer> {
                       },
                       Icons.remove_red_eye,
                       lenght: theNumberVis,
-                      color: Colors.blueAccent
+                      color: Colors.blueAccent,
                     ),
                     _cardBuilder(
                       'Weather',
@@ -147,7 +148,15 @@ class _AppDrawerState extends State<AppDrawer> {
                             .pushNamed(WeatherScreen.routeName);
                       },
                       Icons.cloud,
-                      color: Colors.lightBlueAccent
+                      color: Colors.lightBlueAccent,
+                    ),
+                    _cardBuilder(
+                      'Map',
+                      () {
+                        Navigator.of(context).pushNamed(RadovisMaps.routeName);
+                      },
+                      Icons.map,
+                      color: Colors.pinkAccent,
                     ),
                   ],
                 ),

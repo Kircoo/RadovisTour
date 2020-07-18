@@ -14,6 +14,25 @@ class VisitedScreen extends StatefulWidget {
 
 class _VisitedScreenState extends State<VisitedScreen> {
   final GlobalKey<AnimatedListState> _keyVisited = GlobalKey();
+  var _isInit = true;
+  var _isLoading = true;
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+      Provider.of<DataProvider>(context).fetchVisited().then((_) {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,26 +41,30 @@ class _VisitedScreenState extends State<VisitedScreen> {
           title: Text('Visited'),
         ),
         body: Container(
-          child: FutureBuilder(
-            future: Provider.of<DataProvider>(context, listen: false)
-                .fetchVisited(),
-            builder: (ctx, snapshot) => visitedList.isEmpty
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Your visited list is empty!'),
-                        Icon(Icons.sentiment_dissatisfied),
-                      ],
-                    ),
-                  )
-                : AnimatedList(
-                    key: _keyVisited,
-                    itemBuilder: (ctx, index, animation) =>
-                        _buildItem(visitedList[index].name, index, animation),
-                    initialItemCount: visitedList.length,
-                  ),
-          ),
+          child: _isLoading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : FutureBuilder(
+                  future: Provider.of<DataProvider>(context, listen: false)
+                      .fetchVisited(),
+                  builder: (ctx, snapshot) => visitedList.isEmpty
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Your visited list is empty!'),
+                              Icon(Icons.sentiment_dissatisfied),
+                            ],
+                          ),
+                        )
+                      : AnimatedList(
+                          key: _keyVisited,
+                          itemBuilder: (ctx, index, animation) => _buildItem(
+                              visitedList[index].name, index, animation),
+                          initialItemCount: visitedList.length,
+                        ),
+                ),
         ),
       ),
     );
@@ -88,7 +111,7 @@ class _VisitedScreenState extends State<VisitedScreen> {
                         'visited',
                         visitedList[index].id,
                         '${visitedList[index].name}',
-                        'Favorites',
+                        'Visited',
                         context,
                       );
                     });
@@ -102,7 +125,7 @@ class _VisitedScreenState extends State<VisitedScreen> {
     );
   }
 
-    void _removeItem(int i) {
+  void _removeItem(int i) {
     String removeItem = visitedList[i].name;
     AnimatedListRemovedItemBuilder builder = (context, animation) {
       return _buildItem(removeItem, i, animation);

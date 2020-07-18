@@ -8,6 +8,22 @@ class AboutBody extends StatefulWidget {
 }
 
 class _AboutBodyState extends State<AboutBody> {
+  List<Color> colors = [
+    Colors.red,
+    Colors.redAccent,
+    Colors.cyan,
+    Colors.blue,
+    Colors.blueAccent,
+    Colors.lightBlue,
+    Colors.lightBlueAccent,
+    Colors.amber,
+    Colors.amberAccent,
+    Colors.pink,
+    Colors.pinkAccent,
+    Colors.purple,
+    Colors.purpleAccent,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SliverList(
@@ -35,40 +51,23 @@ class _AboutBodyState extends State<AboutBody> {
                 ),
                 child: Stack(
                   children: [
-                    Hero(
-                      tag: aboutList[index].id,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                          image: DecorationImage(
-                            colorFilter: ColorFilter.mode(
-                              Colors.black.withOpacity(0.5),
-                              BlendMode.darken,
-                            ),
-                            image: AssetImage(
-                              aboutList[index].image,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
                     ListTile(
                       leading: Icon(
                         Icons.arrow_right,
-                        color: Colors.white,
+                        color: colors[index],
                       ),
                       title: Text(
                         aboutList[index].name,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: colors[index],
                         ),
                       ),
-                      trailing: Icon(
-                        aboutList[index].icon,
-                        color: Colors.white,
+                      trailing: Hero(
+                        tag: aboutList[index].id,
+                        child: Icon(
+                          aboutList[index].icon,
+                          color: colors[index],
+                        ),
                       ),
                     ),
                   ],

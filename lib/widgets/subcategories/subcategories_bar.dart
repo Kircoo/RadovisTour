@@ -13,10 +13,10 @@ class _SubCategiresBarState extends State<SubCategiresBar> {
     final subCatItemId = ModalRoute.of(context).settings.arguments as int;
     final selectedSubId =
         categories.firstWhere((subItem) => subItem.id == subCatItemId);
-    return SliverAppBar(
-      backgroundColor: Colors.transparent,
-      pinned: true,
-      flexibleSpace: Stack(
+    return Container(
+      // backgroundColor: Colors.transparent,
+      // pinned: true,
+      child: Stack(
         children: [
           Hero(
             tag: selectedSubId.id,
@@ -55,9 +55,18 @@ class _SubCategiresBarState extends State<SubCategiresBar> {
               ),
             ),
           ),
+          IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )
         ],
       ),
-      expandedHeight: 150,
+      height: 150,
     );
   }
 }

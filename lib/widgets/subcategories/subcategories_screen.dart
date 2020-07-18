@@ -14,10 +14,18 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
+        // body: CustomScrollView(
+        //   slivers: [
+        //     SubCategiresBar(),
+        //     SubCategoryBody(),
+        //   ],
+        // ),
+        body: Column(
+          children: [
             SubCategiresBar(),
-            SubCategoryBody(),
+            Expanded(
+              child: SubCategoryBody(),
+            ),
           ],
         ),
       ),

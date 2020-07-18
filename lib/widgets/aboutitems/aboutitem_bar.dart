@@ -15,6 +15,7 @@ class _AboutItemBarState extends State<AboutItemBar> {
     return SliverAppBar(
       backgroundColor: Colors.transparent,
       pinned: true,
+      title: Text(selectedAboutItem.name),
       flexibleSpace: Stack(
         children: [
           Hero(
@@ -26,37 +27,22 @@ class _AboutItemBarState extends State<AboutItemBar> {
                   bottomRight: Radius.circular(25),
                   bottomLeft: Radius.circular(25),
                 ),
-                image: DecorationImage(
-                  image: AssetImage(
-                    selectedAboutItem.image,
-                  ),
-                  colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.5),
-                    BlendMode.darken,
-                  ),
-                  fit: BoxFit.cover,
-                ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              bottom: 10.0,
-            ),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                selectedAboutItem.name,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: Icon(
+                    selectedAboutItem.icon,
+                    color: Colors.white,
+                    size: 40,
+                  ),
                 ),
               ),
             ),
           ),
         ],
       ),
-      expandedHeight: 450,
     );
   }
 }
