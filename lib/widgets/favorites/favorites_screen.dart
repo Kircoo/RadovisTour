@@ -17,6 +17,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   final GlobalKey<AnimatedListState> _keyFavorite = GlobalKey();
   var _isInit = true;
   var _isLoading = true;
+  var tween = Tween(begin: Offset(1.0, 0.0), end: Offset.zero)
+      .chain(CurveTween(curve: Curves.fastLinearToSlowEaseIn));
 
   @override
   void didChangeDependencies() {
@@ -76,8 +78,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     int index,
     Animation animation,
   ) {
-    return ScaleTransition(
-      scale: animation,
+    return SlideTransition(
+      position: animation.drive(tween),
       child: Padding(
         padding: const EdgeInsets.all(6.0),
         child: GestureDetector(

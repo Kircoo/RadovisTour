@@ -16,6 +16,8 @@ class _VisitedScreenState extends State<VisitedScreen> {
   final GlobalKey<AnimatedListState> _keyVisited = GlobalKey();
   var _isInit = true;
   var _isLoading = true;
+  var tween = Tween(begin: Offset(1.0, 0.0), end: Offset.zero)
+      .chain(CurveTween(curve: Curves.fastLinearToSlowEaseIn));
 
   @override
   void didChangeDependencies() {
@@ -75,8 +77,8 @@ class _VisitedScreenState extends State<VisitedScreen> {
     int index,
     Animation animation,
   ) {
-    return ScaleTransition(
-      scale: animation,
+    return SlideTransition(
+      position: animation.drive(tween),
       child: Padding(
         padding: const EdgeInsets.all(6.0),
         child: GestureDetector(

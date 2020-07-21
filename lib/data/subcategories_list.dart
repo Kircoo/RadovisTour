@@ -19,4 +19,16 @@ final List<SubCategories> subcategories = [
     image: 'assets/images/subcategories/radovissquare.jpg',
     name: 'Radovish Square St.Spaso',
   ),
+  SubCategories(
+    id: 's4',
+    categoryId: 1,
+    image: 'assets/images/subcategories/turbe.jpg',
+    name: 'Turbe',
+  ),
+  SubCategories(
+    id: 's5',
+    categoryId: 1,
+    image: 'assets/images/subcategories/raklish.jpg',
+    name: 'Hot Spring Raklish',
+  ),
 ];
