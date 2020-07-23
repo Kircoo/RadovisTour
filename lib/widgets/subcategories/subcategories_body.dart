@@ -70,7 +70,8 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed(SubItemScreen.routeName,
-                        arguments: subcategories[index].id);
+                        arguments: displayedSubCategories[index].id);
+                    
                   },
                   child: Stack(
                     children: [

@@ -31,4 +31,34 @@ final List<SubCategories> subcategories = [
     image: 'assets/images/subcategories/raklish.jpg',
     name: 'Hot Spring Raklish',
   ),
+  SubCategories(
+    id: 's6',
+    categoryId: 2,
+    image: 'assets/images/subcategories/plackovica.jpg',
+    name: 'Plachkovica',
+  ),
+  SubCategories(
+    id: 's7',
+    categoryId: 2,
+    image: 'assets/images/subcategories/lisec.jpg',
+    name: 'Lisec',
+  ),
+  SubCategories(
+    id: 's8',
+    categoryId: 2,
+    image: 'assets/images/subcategories/belkamen.jpg',
+    name: 'Bel Kamen',
+  ),
+  SubCategories(
+    id: 's9',
+    categoryId: 2,
+    image: 'assets/images/subcategories/cupino.jpg',
+    name: 'Chupino',
+  ),
+  SubCategories(
+    id: 's10',
+    categoryId: 2,
+    image: 'assets/images/subcategories/karatepe.jpg',
+    name: 'Kara Tepe',
+  ),
 ];

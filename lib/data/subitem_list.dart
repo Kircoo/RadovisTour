@@ -62,5 +62,84 @@ The Hot Srping in Raklish is said that dates from the Rome empire. Mainly they u
 Today it is used as pool for the little kids in the settlement and for a water for the animals in the settlement.''',
     lon: 41.630225,
     lat: 22.482212,
-  )
+  ),
+  SubItem(
+    id: 'i6',
+    name: 'Plachkovica',
+    subCategoryId: 's6',
+    description:
+        '''Plachkovica is medium-high mountain in the eastern part of Macedonia. The highest point is the peak Lisec with a height of 1,754 m.
+It rises between the town of Radovish and the Strumica-Radovish Valley to the south and the Kocani Valley to the north, in a northwest-southeast direction.
+There are several legends about the origin of the name of the mountain Plachkovica.There are two versions of the first legend which tells the story of Alexander III of Macedon and Philip II of Macedon.
+According to the first version, King Alexander III of Macedon resided with a king of Paeonia. The two kings met in the Holy City, which was located on the plateau of Mount Plachkovica. In that Holy City, Alexander and his host Lipius discussed how to maintain good relations between the two nations for better or for worse.
+They agreed to help each other in all matters related to state relations. After such an agreement and understanding, there was no end to the joy, and it spread to the people, so that individuals, like the king, began to weep and shed tears of joy.
+On the basis of this incident (and because many tears were shed) a stream was formed - a river, which the locals then called Plachkovica, after which they changed the name of the mountain in Plachkovica, names that remain to this day.
+According to the second version, the name of that mountain was changed after the meeting of King Alexander III of Macedon and the King of Paeonia - Langar. The meeting of the two kings was on the mountain in the settlement of Svet Grad.
+On it, Alexander as Macedonian king, and Langar as king of the Paionians, agreed to establish better state relations than those between his father Philip II while King Langar was alive.
+The understanding of state affairs among the kings was at an enviable level, after which the two began to shed tears of joy, so many tears that a stream was formed, which the locals called Plachkovica, because the kings cried with joy.
+According to the second legend, King Philip II took his son Alexander to the mountain Plachkovica, which previously had another name, to a woman who knew how to heal to cure him of the excessive crying that overwhelmed him. That woman lived in the town of Plachkovica which was called Svet Grad.
+After they brought Prince Alexander accompanied by his father King Philip II and told the woman what it was all about, she replied that the child was completely healthy and was crying because he had too much energy and thus had to frees her, telling them not to get excited, they should leave him alone and that soon, as soon as he starts walking, he will stop crying and predict that he will become a great king and surpass his fathers fame.
+When Philip II heard this, who was accompanied by the local king Lipij, who was staying in the Holy City of Plachkovica, he cried with joy like his host, and after their crying, the name of the mountain was changed to Plachkovica.
+The length of the main mountain ridge is 34 km. With the valley of Zrnovska Reka, the mountain Plachkovica is divided into two parts: east and west. The western part is lower with the highest peak Turtel (1,689 m), and the eastern part of Plachkovica is higher and it has the peaks Lisec (1,754 m), Cupino (1,725 ​​m), Bel Kamen (1,707 m), Kara Tepe (1,625 m) and others.
+The geological composition consists of granites (in the east), crystalline shales, gneisses and a narrow strip of marble in the west. The relief is interesting, represented by fluvial plains (surfaces) in the higher parts and steep mountain sides of a fault character.
+The climate of the area from Plachkovica is temperate-continental, with a certain influence of the Mediterranean climate from the south. Average annual temperatures are around 10-12 degrees Celsius. Precipitation is modest and averages about 500 mm per year in the lower to 800 mm in the higher parts.
+On the mountain Plachkovica there are three beautiful canyons: Kamnik, Kozjak and Zrnovka in which there are beautiful natural beauties such as rivers, waterfalls, overpasses, high rocks ...
+For many, Kamnik Canyon is a small Colorado with its beauty. All canyons are provided with the necessary infrastructure for smooth movement (markings, billboards, signposts, cables, ferries and a place to rest).
+Among the many beauties that Mount Plachkovica offers are the caves that there are more, five of which have been explored and are available for visitors. The largest of them is the Great Cave, with a examined length of 600 meters.
+It is a real pearl with its cave decorations and a challenge for speleologists. The caves: Zup, Ajduchka, Turtel and Ponor are smaller, but rich in cave decorations and are easily accessible to visitors and lead to marked paths.
+The first Macedonian astronomical observatory, in which professionals will work 24 hours, will be located in Plachkovica. In the heart of the mountain, near the famous children's resort managed by the state university Goce Delchev from Stip, the location of the investment worth two million is planned.''',
+    lon: 41.741489,
+    lat: 22.500747,
+  ),
+  SubItem(
+    id: 'i7',
+    name: 'Lisec',
+    subCategoryId: 's7',
+    description:
+        '''Lisec the highest peak of the mountain Plachkovica with a height of 1,754 m, The peak rises in the eastern part of the mountain.
+Climbing to the top is possible from the north, south and east side, with the easiest path being the north side.
+The peak is also known as one of the peaks in Macedonia with the greatest insight
+Lisec is one of the peaks in Macedonia with the greatest view, ie the farthest horizontal line of sight. In clear weather and clear atmosphere, you can see Mount Rila in the east, the Gulf of Thessaloniki in the south, and even Mount Olympus.
+Thanks to the great insight, in the past at the top was a military radar observation center, and more recently it is planned to set up an astronomical observatory.''',
+    lon: 41.780396,
+    lat: 22.507239,
+  ),
+  SubItem(
+    id: 'i8',
+    name: 'Bel Kamen',
+    subCategoryId: 's8',
+    description:
+        '''Bel Kamen (White Stone) is peak of the mountain Plachkovica with a height of 1,707 m.
+The peak rises in the eastern part of the mountain, where are the peaks Lisec (1,754 m), Cupino Brdo (1,725 m) and Kara Tepe (1,625 m).
+At the top there is a monument dedicated to the National Liberation Struggle.''',
+    lon: 41.771114,
+    lat: 22.564147,
+  ),
+  SubItem(
+    id: 'i9',
+    name: 'Chupino',
+    subCategoryId: 's9',
+    description:
+        '''Chupino peak of the mountain Plachkovica with a height of 1,725 m. The peak rises in the eastern part of the mountain.
+In the immediate vicinity southwest of the peak, at an altitude of about 1,400 meters, are the springs of the Vinicka River.
+The Macedonian revolutionary Gjorce Petrov in his book Materials after the study of Macedonia from 1896, wrote about the peak Cupino that it is the main peak of Plachkovica, which rises south of the village Blatec and Vinica in the highest part of the chain, namely where it carries the name Plachkovica.
+Above here, the wide ridge of the chain rises like a bare rocky and not particularly high ridge, which can be seen from all over Kocani.
+The local population and the older literature call the peak only Cupino, while in the newer military and cadastral topographic maps the peak is found under the name Cupino Brdo, similar to the eponymous peak and branch of the mountain Bilino in northeastern Macedonia.
+According to the legend of the locals from Blatec and the villages and Vinica, the name of the peak Chupino came after an incident when the local bey wanted to grab and take in the palace a very beautiful girl Chupa from Blatec, who at that time was mostly inhabited by Turkish population.
+The beautiful Chupa, not wanting to be kidnapped and taken to the Saraj, fled to the forests of the mountain Plachkovica where she hid from the Turkish chase for several days. Hiding for several days through the forests, she reached the very top of the rocky area, where she died (from hunger or fatigue) due to which the local population in her honor called the peak and the whole area around Chupino.''',
+    lon: 41.808056,
+    lat: 22.560833,
+  ),
+  SubItem(
+    id: 'i10',
+    name: 'Kara Tepe',
+    subCategoryId: 's10',
+    description:
+        '''Kara Tepe - Kara Tepe is peak of the mountain Plachkovica with a height of 1,625 m.
+The peak rises in the eastern part of the mountain, where are the peaks Lisec (1,754 m), Cupino Brdo (1,725 m) and Bel Kamen (1,707 m). The area above which the peak rises is with a high overgrown forest.
+The easiest way to climb the peak is the one from the village Blatec, which continues to the south along the river Blatesnica to Momin Preslap (1,514 m).
+Then the road turns southeast and after a few kilometers leads to the foot of the peak, where it is necessary to make a change of direction through a wooded area to the top.''',
+    lon: 41.74435,
+    lat: 22.610431,
+  ),
 ];

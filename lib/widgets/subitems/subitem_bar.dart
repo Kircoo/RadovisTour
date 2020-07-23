@@ -31,7 +31,7 @@ class _SubItemBarState extends State<SubItemBar> {
                     selectedSubId.image,
                   ),
                   colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.5),
+                    Colors.black.withOpacity(0.3),
                     BlendMode.darken,
                   ),
                   fit: BoxFit.cover,
