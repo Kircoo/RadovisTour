@@ -40,6 +40,14 @@ class DBS {
       conflictAlgorithm: sql.ConflictAlgorithm.replace,
     );
     Flushbar(
+      dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+      flushbarStyle: FlushbarStyle.FLOATING,
+      isDismissible: true,
+      icon: Icon(
+        Icons.add_location,
+        color: Colors.white,
+      ),
+      shouldIconPulse: true,
       title: '$list',
       message: '$name is added to $list',
       duration: Duration(seconds: 3),
@@ -69,6 +77,14 @@ class DBS {
       whereArgs: [id],
     );
     Flushbar(
+      dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+      flushbarStyle: FlushbarStyle.FLOATING,
+      isDismissible: true,
+      icon: Icon(
+        Icons.delete_sweep,
+        color: Colors.white,
+      ),
+      shouldIconPulse: true,
       title: '$list',
       message: '$name is deleted from $list',
       duration: Duration(seconds: 3),
