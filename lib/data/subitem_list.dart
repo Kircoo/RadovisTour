@@ -142,4 +142,35 @@ Then the road turns southeast and after a few kilometers leads to the foot of th
     lon: 41.74435,
     lat: 22.610431,
   ),
+  SubItem(
+    id: 'i11',
+    name: 'Mantovo',
+    subCategoryId: 's11',
+    description:
+        '''Mantovo is artificial lake in Lakavicko, in the southeastern part of Macedonia. It is located 15 km from the village Konce, 18 km from Radovish and 25 km from Stip. The lake has an elongated shape and covers a total area of 4.49 km2.
+Administratively, the lake is located entirely in the Municipality of Konce.
+Lake Mantovo was built on the river Kriva Lakavica in 1978, with the basic function to irrigate Radovish, to provide water for the needs of the mine Buchim, to provide water supply to the Municipality of Konce, as well as to become the main tourist center in the region.
+The lake stretches east to west. It is bordered on the north by the area of the village Dolna Vrastica, on the east by the area of the village Gabrevci, on the south by the area of the village Dolni Radesh, while on the west by the area of the village Garvan, where the embankment of the dam is located.
+The lake is rich in rich and diverse species, with many species of freshwater fish and birds in and around it. The most common types of fish are: carp, catfish, carash, perch, chub, scarecrow, scorpionfish, redfish and lichen.
+The following species are also found in the reservoir: frogs, sea turtles and water snakes.
+Recently, several activities have been undertaken to promote Mantovo as a major tourist center in the region. The pleasant climate with a water temperature of 24 ° C in the summer is suitable for bathing and practicing water sports.
+The presence of many species of fish create good preconditions for sport fishing, and the elongated vertical gram rocks near the hill Gabrovska Chuka provide good conditions for alpine climbing.
+In December 2014, three wooden Vlach huts were built by the lake as part of a project to promote Vlach cultural heritage in the Ser and Konce regions as part of cross-border co-operation with Greece.
+Despite the fact that Vlachs do not live in the Municipality of Konce, the local self-government called the constructed buildings "Vlach huts" because of the place where they passed and stayed.
+The cottages are built in an old style, made of wood, with a concrete base, and are equipped with a bed, table and wooden benches.''',
+    lon: 41.583919,
+    lat: 22.337320,
+  ),
+  SubItem(
+    id: 'i12',
+    name: 'Chukata',
+    subCategoryId: 's12',
+    description:
+        '''Chukata is a hill over the lake Mantovo. It is high of 1km. There is a road that leads to the top of the hill.
+From the top of the hill the view is magnificent where you can see the lake and all the surrounding villages.
+In the past on this hill was build a fortress for the ottoman sultan. On the hill there are still remainings of buildings from the fortress.
+There is a little cave where water comes from it.''',
+    lon: 41.574287,
+    lat: 22.347988,
+  ),
 ];

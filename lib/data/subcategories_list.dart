@@ -61,4 +61,16 @@ final List<SubCategories> subcategories = [
     image: 'assets/images/subcategories/karatepe.jpg',
     name: 'Kara Tepe',
   ),
+  SubCategories(
+    id: 's11',
+    categoryId: 3,
+    image: 'assets/images/subcategories/mantovo.jpg',
+    name: 'Mantovo',
+  ),
+  SubCategories(
+    id: 's12',
+    categoryId: 3,
+    image: 'assets/images/subcategories/chukata.jpg',
+    name: 'Chukata',
+  ),
 ];
