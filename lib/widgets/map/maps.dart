@@ -15,7 +15,7 @@ class _RadovisMapsState extends State<RadovisMaps> {
 
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(41.637409, 22.466967),
-    zoom: 12.4746,
+    zoom: 10.4746,
   );
 
   // static final CameraPosition _kLake = CameraPosition(

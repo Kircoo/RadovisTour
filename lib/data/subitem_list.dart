@@ -173,4 +173,141 @@ There is a little cave where water comes from it.''',
     lon: 41.574287,
     lat: 22.347988,
   ),
+  SubItem(
+    id: 'i13',
+    name: 'Gabrevci',
+    subCategoryId: 's13',
+    description:
+        '''Gabrevci is a village in the Municipality of Konce, near the town of Radovish.
+The village is located in the northeastern part of the Municipality of Konce in the upper catchment area of the river Kriva Lakavica, a tributary of Bregalnica of the surroundings is built artificial accumulation lake Mantovo.
+Gabrevci is a hilly village, located at an altitude of 500 meters. It is 14 km away from the city of Radovis (more precisely 20 km), while it is 11 km away from the central place, ie the municipal center Konce.
+An asphalt road leads to it, which separates from the main asphalt road, which separating from the road Radovish - Konce leads to the dam and the artificial lake Mantovo.
+The village of Gabrevci is quite old, because there are written historical data about it from the medieval period, as well as a legend among its inhabitants about the historical past of the village.
+First, the village was located in the locality Kuqishte below below the village, then it moved to the locality Ilinica, which is located north above the village in the hilly area, and then it came out,
+ie it was "scattered by hornbeam", ie. gabbro forest, according to which it bears the name Gabrevci and moved again to the locality Selishte
+The name of the village Gabrevci comes from the name of the hornbeam tree which is present in the wooded area around the village.
+The villagers themselves say that during the tripling of the location of the village due to the plague, it was "shaken by hornbeam" that is, it came out, ie the forest with hornbeam trees was cut for its reconstruction.
+According to the book "Dictionary of toponyms in the area of ​​the Bregalnica Basin" for the village Gabrevci it is written that its name originates from the botanical name of the hornbeam tree, and there is an assumption that it derives from the local name or toponym Gabresh
+The village of Gabrevci is known as a place of many good and famous dancers. Due to the extreme and highly developed pottery in Gabrevci most important feature of folk dances and songs of the village is that you play with a pitcher full of water of 12 liters per head.
+In the village there is a folklore group "Gabrevci", which mainly includes the elderly residents of the village, who during 2015 achieved great success, winning first place at a festival in Slovenia.
+The famous pottery man in the village is Velin Manasiev, who is working with this more than 40 years.
+There are few Churches:
+1. Church "Ascension of Christ" - the main village church (old and new building)
+2. Church "St. Dimitrij ”- a monastery church
+3. Church "St. Marena ”- a monastery church
+
+There are Archaeological sites too:
+1. Ilinica - a medieval settlement
+2. Mavrovica - medieval necropolis
+3. Monastery - mound from Roman times
+4. Monastery - Iron Age necropolis''',
+    lon: 41.564689,
+    lat: 22.378873,
+  ),
+  SubItem(
+    id: 'i14',
+    name: 'Oraovica',
+    subCategoryId: 's14',
+    description:
+        '''Oraovica is village in the Municipality of Radovis.
+The village is the largest in the municipality with 1720 inhabitants and is 5 km away from the center of Radovish.
+From the folk legends that are passed down through the generations until today, there are two legends about the origin of the name of the village, which are very different,
+but both give some assumptions about the origin of the village and the name Oraovica.
+According to the first legend, it is assumed that the village got its name from the locality "Orli-Kamen" which is located northeast of the village at a distance of 1 km.
+There was a big (high) stone here where the eagles stopped and gathered, so after the locality "Orli-Kamen" it got the name "Orlivici", "Orlovica" and in the end it got the current name Oraovica.
+Today's village Oraovica, according to some remains and knowledge, is presumed to have existed before the arrival of the Turks in the Balkans, ie before the XV century.
+The village at that time was sparsely populated with Macedonian population. From that period the families meet: Nushovi, Petrushovi, Najchovci, Cilevi, Aleksovi and others.
+Oraovica is not in good economic condition. There are many colonial shops in the village, several supermarkets, but still the economic picture of Oraovica is not the best,
+which contributed to the fact that the majority of the population in Oraovica is engaged in agriculture and a small part in livestock.
+Also, in Oraovica, there is a company that performs partial processing of forest fruits and medicinal herbs.
+The company cooperates with many foreign companies, with which the company makes its own personal profit, in which many employees also see their existence.
+Many of Oraovica's residents, especially young people, work in foreign countries.
+There is Primary school "Cyril and Methodius".
+Above the village is the monastery of st. Gorgi.''',
+    lon: 41.625361,
+    lat: 22.511806,
+  ),
+  SubItem(
+    id: 'i5',
+    name: 'Smilanci',
+    subCategoryId: 's15',
+    description:
+        '''Smilanci is a village in Macedonia, Municipality of Radovis, near the town of Radovish.
+The main connection with the village is the local road Podares-Smilanci.
+The village is located at the foot of Plachkovica, 22 km northeast of Radovish. Smilanci is located at an altitude of about 800 meters in the eastern part of Macedonia, at the foot of the mountain Plachkovica.
+In the village flows the Smilanska River which springs from the Berovo area.
+In the 19th century, the village was part of the Radovis kaza in the Ottoman Empire.
+The Razkig uprising took part in this village.
+After Dimitar Berovski&#39;s company defeated the Turks in Laki, they headed to the village of Smilanci where weapons were previously stored. However, in Smilanci there was a betrayal by the local Pole in Radovis, so here the Turkish army reacted quickly and the insurgents failed.
+On May 29, the Turkish army, reinforced by a bashibozuk of about 1,000 men, launched a counterattack against 300 insurgents. The villagers who failed to escape were brutally killed, left as an example to the population, and some of the villagers from the area were tortured as prisoners in Ser, Thessaloniki, Skopje and others.
+Pop Stojan committed suicide, and about 30 insurgents from the Razlog detachment, led by Dimitar Pop-Georgiev Berovski, managed to partially stay and continue the fight in the Maleshevo Mountains, Pijanec, Osogovo Mountains and Kresna.''',
+    lon: 41.696305,
+    lat: 22.604735,
+  ),
+  SubItem(
+    id: 'i16',
+    name: 'Dedino',
+    subCategoryId: 's16',
+    description:
+        '''Dedino is a village in the Municipality of Konce, near the town of Radovish.
+Dedino is known as an important place from the time of the Ilinden Uprising, when a rifle was built in it, and a good part of the population directly participated in the uprising.
+The village of Dedino is located on the territory of the Municipality of Konce, on the ridge, ie on the ridge of the mountain Smrdeshnik, between Radovishko Pole and the upper catchment area of ​​Kriva Lakavica.
+Although there is such a specific location on the border between Radovishko Pole and Lakavica, according to the residents and according to the geographical and ethnographic features, Dedino belongs to Lakavica, so in the past it was moved from the former municipality of Injevo to Konce.
+Dedino is a hilly village located at an altitude of 689 meters. The village is located on the mountain Smrdeshnik surrounded by several hills.
+The village of Dedino is a very old village, one of the oldest villages in Radovis and Lakavica, as evidenced by written records from the XIV century.
+Namely, under the same name Dedino (Dudino) together with Rakitec, Lubnica are mentioned in a written record from 1366, when the famous church "St. Stefan ”in the village of Konce.
+According to the legends, it got its name from some grandfather and grandson who lived in this area. The name of the village Dedino is very old with the oldest confirmation, written in the same form Dedino from 1366, and according to scientific interpretations it comes from the word grandfather or personal name Grandfather.
+Considering that in ancient medieval times, even today, priests and religious dignitaries - bishops are called grandfathers, due to the central location, it is possible that Dedino was the seat and residence of a grandfather-bishop from where he got the name Dedino - village, place.
+There are several monuments in the village, and the houses where the first bombs were made still exist.
+
+There are two churches:
+1. Church "St. Nikola ”- the main village church;
+2. Church "St. Athanasius "- a village church at the entrance to the village.''',
+    lon: 41.570588,
+    lat: 22.425808,
+  ),
+  SubItem(
+    id: 'i17',
+    name: 'Injevo',
+    subCategoryId: 's17',
+    description:
+        '''Injevo is a village in the Municipality of Radovis, near the town of Radovis.
+Injevo is located west of the town of Radovish.
+At the end of the 19th century, the village was part of the Radovis kaza of the Ottoman Empire.
+In 1897, the Radovis affair of the MRO took place in Dedino and Injevo.
+There is a primary school "Orce Nikolov", Pharmacy and kindergarten.
+
+There are many archaeological sites:
+1. Big Tomb - Iron Age tumulus;
+2. Gramadi - late antique settlement;
+3. Mala Tumba - a tumulus from the Iron Age;
+4. Boundaries - late antique settlement and necropolis;
+5. Settlement - a settlement from Roman times;
+6. Settlement II - medieval church and necropolis;
+
+There are 4 churches:
+1. Church "Ascension of Christ"
+2. Church "Nativity of the Most Holy Mother of God"
+3. Church "St. Friday"
+4. Church "St. Archangel Michael"''',
+    lon: 41.613896,
+    lat: 22.427825,
+  ),
+  SubItem(
+    id: 'i18',
+    name: 'Monastery st. Gorgi',
+    subCategoryId: 's18',
+    description:
+        '''The Geographical position of The Monastery of the Holy Great Martyr George is located 2 km north of the village Oraovica, under the slopes (at the foot) of the mountains Plachkovica and Izveden,
+meanwhile it is one of the most visited Orthodox shrines in the Radovis region.
+According to such features, this monastery is characterized by an excellent geographical position. The monastery is connected by an asphalt road to the village of Oraovica,
+and there is also a pedestrian path from the village of Oraovica to the monastery of St. George. with urban equipment, such as benches and lighting, which allows easier access to the monastery itself.
+Thanks to exactly this spatial location (geographical position) of the monastery, it is possible to have much wider geographical contact and access to it, and thus better conditions for tourism development.
+This monastery, according to many assumptions, dates from the 12th-13th century. In the yard of the monastery "St. George" there are foundations and walls at a height of 0.8 meters. XIV century.
+There are traces of frescoes on the south wall. In 2011 The old monastery was demolished and completely reconstructed, so that on 15.10.2011 the cornerstone of the new monastery church was laid, and on 24.11.2012 the monastery was consecrated church, bell tower and monastery residence.
+On 19.04.2015. in the monastery complex of St. George in Oraovica, the Metropolitan of Bregalnica Mr. Hilarion celebrated the Holy Hierarch's Worship Service, after which he performed the act of group wedding of older married couples who were not previously married in a church.
+A total of 22 married couples from Radovis who were mostly over 50 years old were married at this event.''',
+    lon: 41.645636,
+    lat: 22.509325,
+  ),
 ];

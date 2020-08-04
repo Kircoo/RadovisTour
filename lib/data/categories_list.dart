@@ -28,7 +28,7 @@ final List<Categories> categories = [
   ),
   Categories(
     id: 5,
-    name: 'Coffee bar and restaurant',
+    name: 'Coffee bars and restaurants',
     img: 'assets/images/categories/coffee.jpg',
     icon: Icons.nature,
   ),

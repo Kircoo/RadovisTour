@@ -73,4 +73,40 @@ final List<SubCategories> subcategories = [
     image: 'assets/images/subcategories/chukata.jpg',
     name: 'Chukata',
   ),
+  SubCategories(
+    id: 's13',
+    categoryId: 4,
+    image: 'assets/images/subcategories/gabrevci.jpg',
+    name: 'Gabrevci',
+  ),
+  SubCategories(
+    id: 's14',
+    categoryId: 4,
+    image: 'assets/images/subcategories/oraovica.jpg',
+    name: 'Oraovica',
+  ),
+  SubCategories(
+    id: 's15',
+    categoryId: 4,
+    image: 'assets/images/subcategories/smilanci.jpg',
+    name: 'Smilanci',
+  ),
+  SubCategories(
+    id: 's16',
+    categoryId: 4,
+    image: 'assets/images/subcategories/dedino.jpg',
+    name: 'Dedino',
+  ),
+  SubCategories(
+    id: 's17',
+    categoryId: 4,
+    image: 'assets/images/subcategories/injevo.jpg',
+    name: 'Injevo',
+  ),
+  SubCategories(
+    id: 's18',
+    categoryId: 4,
+    image: 'assets/images/subcategories/svgorgi.jpg',
+    name: 'Monastery st. Gorgi',
+  ),
 ];
