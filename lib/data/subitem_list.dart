@@ -208,8 +208,7 @@ There are Archaeological sites too:
     id: 'i14',
     name: 'Oraovica',
     subCategoryId: 's14',
-    description:
-        '''Oraovica is village in the Municipality of Radovis.
+    description: '''Oraovica is village in the Municipality of Radovis.
 The village is the largest in the municipality with 1720 inhabitants and is 5 km away from the center of Radovish.
 From the folk legends that are passed down through the generations until today, there are two legends about the origin of the name of the village, which are very different,
 but both give some assumptions about the origin of the village and the name Oraovica.
@@ -309,5 +308,97 @@ On 19.04.2015. in the monastery complex of St. George in Oraovica, the Metropoli
 A total of 22 married couples from Radovis who were mostly over 50 years old were married at this event.''',
     lon: 41.645636,
     lat: 22.509325,
+  ),
+  SubItem(
+    id: 'i19',
+    name: 'DownTown',
+    subCategoryId: 's19',
+    description:
+        '''Downtown is a coffee bar where they serve coffee, alcoholic and non alcoholic drinks.''',
+    lon: 41.634305,
+    lat: 22.464697,
+  ),
+  SubItem(
+    id: 'i20',
+    name: 'Ti-amo',
+    subCategoryId: 's20',
+    description:
+        '''Ti-amo is the oldest coffee bar in Radovish where they serve coffee, alcoholic and non alcoholic drinks.
+The best weekend parties in the summer are made in Ti-amo.''',
+    lon: 41.638344,
+    lat: 22.461211,
+  ),
+  SubItem(
+    id: 'i21',
+    name: 'Escape',
+    subCategoryId: 's21',
+    description:
+        '''Escape is one of the oldest coffee bars in Radovish where they serve coffee, alcoholic and non alcoholic drinks.''',
+    lon: 41.639108,
+    lat: 22.460195,
+  ),
+  SubItem(
+    id: 'i22',
+    name: 'Element',
+    subCategoryId: 's22',
+    description:
+        '''Element is a coffee bar where they serve coffee, alcoholic and non alcoholic drinks.''',
+    lon: 41.634091,
+    lat: 22.464918,
+  ),
+  SubItem(
+    id: 'i23',
+    name: 'Galactic',
+    subCategoryId: 's23',
+    description:
+        '''Galactic is a coffee bar where they serve coffee, alcoholic and non alcoholic drinks.
+On the weekends they are making parties.''',
+    lon: 41.633986,
+    lat: 22.465525,
+  ),
+  SubItem(
+    id: 'i24',
+    name: 'Ti-amo Garden',
+    subCategoryId: 's24',
+    description:
+        '''Ti-amo Garden is a launch bar where they serve food and drinks.''',
+    lon: 41.638210,
+    lat: 22.461315,
+  ),
+  SubItem(
+    id: 'i25',
+    name: 'Joker',
+    subCategoryId: 's25',
+    description:
+        '''Joker is a pizzeria where they serve food and drinks. They make the best pizzas and somuns in Radovish.''',
+    lon: 41.640972,
+    lat: 22.460421,
+  ),
+  SubItem(
+    id: 'i26',
+    name: 'Diamond Garden',
+    subCategoryId: 's26',
+    description:
+        '''Diamond Garden is a restaurant where they serve food and drinks. They also have a hotel in their building.''',
+    lon: 41.632913,
+    lat: 22.455895,
+  ),
+  SubItem(
+    id: 'i27',
+    name: 'Ambasador',
+    subCategoryId: 's27',
+    description:
+        '''Ambasador is a restaurant where they serve food and drinks.''',
+    lon: 41.635539,
+    lat: 22.459730,
+  ),
+  SubItem(
+    id: 'i28',
+    name: 'D club',
+    subCategoryId: 's28',
+    description:
+        '''D club is a restaurant where they serve food and drinks, and also the best fish is prepared here.''',
+    lon: 41.633953,
+    lat: 22.469849,
   ),
 ];

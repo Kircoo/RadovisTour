@@ -32,10 +32,4 @@ final List<Categories> categories = [
     img: 'assets/images/categories/coffee.jpg',
     icon: Icons.nature,
   ),
-    Categories(
-    id: 6,
-    name: 'Food',
-    img: 'assets/images/categories/food.jpg',
-    icon: Icons.nature,
-  ),
 ];

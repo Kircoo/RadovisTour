@@ -192,7 +192,9 @@ class _WeatherScreenState extends State<WeatherScreen>
                                                 .format(DateTime.now())
                                                 .toString()),
                                             WeatherSvg(
-                                              '${theItems.temp.toStringAsFixed(0)}°',
+                                              theItems.temp != null
+                                                  ? '${theItems.temp.toStringAsFixed(0)}°'
+                                                  : 'not available',
                                               theItems.weatherCode.toString(),
                                             ),
                                           ],
@@ -207,14 +209,18 @@ class _WeatherScreenState extends State<WeatherScreen>
                                               _weatherCard(
                                                 WeatherIcons.thermometer,
                                                 'Temperature',
-                                                '${theItems.temp.toStringAsFixed(0)}°',
+                                                theItems.temp != null
+                                                    ? '${theItems.temp.toStringAsFixed(0)}°'
+                                                    : 'not available',
                                                 Colors.red,
                                               ),
                                               _weatherCard(
                                                 WeatherIcons
                                                     .thermometer_exterior,
                                                 'Feels Like',
-                                                '${theItems.feelsLike.toStringAsFixed(0)}°',
+                                                theItems.feelsLike != null
+                                                    ? '${theItems.feelsLike.toStringAsFixed(0)}°'
+                                                    : 'not available',
                                                 Colors.red,
                                               ),
                                               _weatherCard(
@@ -232,7 +238,9 @@ class _WeatherScreenState extends State<WeatherScreen>
                                               _weatherCard(
                                                 WeatherIcons.humidity,
                                                 'Humidity',
-                                                '${theItems.humidity.toStringAsFixed(0)}%',
+                                                theItems.humidity != null
+                                                    ? '${theItems.humidity.toStringAsFixed(0)}%'
+                                                    : 'not available',
                                                 Colors.blueAccent,
                                               ),
                                               MoonPhase(
