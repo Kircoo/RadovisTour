@@ -22,17 +22,14 @@ class _WeatherScreenState extends State<WeatherScreen>
     if (connectivityResult == ConnectivityResult.mobile) {
       setState(() {
         isConnected = true;
-        print(isConnected);
       });
     } else if (connectivityResult == ConnectivityResult.wifi) {
       setState(() {
         isConnected = true;
-        print(isConnected);
       });
     } else if (connectivityResult == ConnectivityResult.none) {
       setState(() {
         isConnected = false;
-        print(isConnected);
       });
     }
     return false;
@@ -89,7 +86,7 @@ class _WeatherScreenState extends State<WeatherScreen>
         body: RefreshIndicator(
           color: Theme.of(context).primaryColor,
           onRefresh: () {
-            return Navigator.of(context).pushNamed(WeatherScreen.routeName);
+            return Navigator.of(context).pushReplacementNamed(WeatherScreen.routeName);
           },
           child: Stack(
             children: [
