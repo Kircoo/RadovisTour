@@ -49,7 +49,7 @@ class _SubItemBarState extends State<SubItemBar> {
                 selectedSubId.name,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 30,
+                  fontSize: 25,
                 ),
               ),
             ),

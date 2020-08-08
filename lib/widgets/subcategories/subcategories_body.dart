@@ -66,7 +66,7 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
           children: [
             SizedBox(
               child: Padding(
-                padding: const EdgeInsets.only(top: 40, bottom: 0),
+                padding: const EdgeInsets.only(top: 10, bottom: 0),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed(SubItemScreen.routeName,
@@ -78,7 +78,7 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                       Hero(
                         tag: displayedSubCategories[index].id,
                         child: Container(
-                          height: Curves.easeInOut.transform(value) * 500,
+                          height: Curves.easeInOut.transform(value) * MediaQuery.of(context).size.height * 0.6,
                           width: Curves.easeInOut.transform(value) * 300,
                           margin: EdgeInsets.all(5),
                           decoration: BoxDecoration(
@@ -104,7 +104,7 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                                 leading: Text(
                                   displayedSubCategories[index].name,
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     color: Colors.white,
                                   ),
                                 ),

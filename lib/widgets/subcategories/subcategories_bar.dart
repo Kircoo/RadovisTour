@@ -50,7 +50,7 @@ class _SubCategiresBarState extends State<SubCategiresBar> {
                 selectedSubId.name,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 30,
+                  fontSize: 25,
                 ),
               ),
             ),
