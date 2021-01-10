@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^1.1.0
-  circular_menu: ^0.1.3
+  circular_menu: ^1.1.2
   http: ^0.12.1
   provider: ^4.1.3
   weather_icons: ^2.0.1
