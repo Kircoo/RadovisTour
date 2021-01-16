@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "515421629590-d4dll4ersamae4489p668d4c6rf965lv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tourism.radovish_tour",
+            "certificate_hash": "7ebfe25f2acd4db92fe35a9cfdc921cbc5ef3dab"
+          }
+        },
+        {
           "client_id": "515421629590-sl4t10u87u5vs4f388a332de9aa8ij6f.apps.googleusercontent.com",
           "client_type": 3
         }

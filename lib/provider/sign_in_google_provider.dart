@@ -6,8 +6,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 class SignInGoogleProvider with ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
+  User theSingedUser;
 
-  Future<String> signInWithGoogle() async {
+  Future<User> signInWithGoogle() async {
     await Firebase.initializeApp();
 
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
@@ -22,6 +23,7 @@ class SignInGoogleProvider with ChangeNotifier {
     final UserCredential authResult =
         await _auth.signInWithCredential(credential);
     final User user = authResult.user;
+    theSingedUser = authResult.user;
 
     if (user != null) {
       assert(!user.isAnonymous);
@@ -30,16 +32,16 @@ class SignInGoogleProvider with ChangeNotifier {
       final User currentUser = _auth.currentUser;
       assert(user.uid == currentUser.uid);
 
-      print('signInWithGoogle succeeded: $user');
+      //print('signInWithGoogle succeeded: $user');
 
-      return '$user';
+      return theSingedUser;
     }
     notifyListeners();
     return null;
   }
 
   Future<void> signOutGoogle() async {
-    await googleSignIn.signOut();
+    await googleSignIn.disconnect();
 
     print("User Signed Out");
     notifyListeners();

@@ -17,6 +17,10 @@
 
 # Android related
 **/android/key.properties
+**//android/app/key.jks
+
+# Android related
+**/android/key.properties
 **/android/app/key.jks
 
 # The .vscode folder contains launch configuration and tasks you configure in
