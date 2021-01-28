@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:radovis_tour/widgets/map/markers.dart';
+import 'package:provider/provider.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
 
 class RadovisMaps extends StatefulWidget {
   static const routeName = '/maps';
@@ -13,40 +14,29 @@ class RadovisMaps extends StatefulWidget {
 class _RadovisMapsState extends State<RadovisMaps> {
   Completer<GoogleMapController> _completer = Completer();
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
+  static final CameraPosition _radovisPosition = CameraPosition(
     target: LatLng(41.637409, 22.466967),
     zoom: 10.4746,
   );
 
-  // static final CameraPosition _kLake = CameraPosition(
-  //     bearing: 0,
-  //     target: LatLng(41.635035, 22.473490),
-  //     tilt: 0,
-  //     zoom: 19.151926040649414);
-
   @override
   Widget build(BuildContext context) {
+    final markers = Provider.of<FirebaseProvider>(context).mark;
     return SafeArea(
       child: Scaffold(
-        body: GoogleMap(
-          mapType: MapType.normal,
-          initialCameraPosition: _kGooglePlex,
-          onMapCreated: (GoogleMapController controller) {
-            _completer.complete(controller);
-          },
-          markers: TheMarkers.markers,
+        body: FutureBuilder(
+          future: Provider.of<FirebaseProvider>(context, listen: false)
+              .getMarkers(),
+          builder: (ctx, snapShot) => GoogleMap(
+            mapType: MapType.normal,
+            initialCameraPosition: _radovisPosition,
+            onMapCreated: (GoogleMapController controller) {
+              _completer.complete(controller);
+            },
+            markers: markers,
+          ),
         ),
-        // floatingActionButton: FloatingActionButton.extended(
-        //   onPressed: _goToTheLake,
-        //   label: Text('To the lake!'),
-        //   icon: Icon(Icons.directions_boat),
-        // ),
       ),
     );
   }
-
-  // Future<void> _goToTheLake() async {
-  //   final GoogleMapController controller = await _completer.future;
-  //   controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-  // }
 }

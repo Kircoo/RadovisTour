@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:radovis_tour/data/categories_list.dart';
+import 'package:provider/provider.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
 
 class SubCategiresBar extends StatefulWidget {
   @override
@@ -9,17 +10,13 @@ class SubCategiresBar extends StatefulWidget {
 class _SubCategiresBarState extends State<SubCategiresBar> {
   @override
   Widget build(BuildContext context) {
-    ///Gets the title of the category by argument of [id]
-    final subCatItemId = ModalRoute.of(context).settings.arguments as int;
-    final selectedSubId =
-        categories.firstWhere((subItem) => subItem.id == subCatItemId);
+    final currentCategory =
+        Provider.of<FirebaseProvider>(context).currentCategory;
     return Container(
-      // backgroundColor: Colors.transparent,
-      // pinned: true,
       child: Stack(
         children: [
           Hero(
-            tag: selectedSubId.id,
+            tag: currentCategory['catId'],
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
@@ -28,8 +25,8 @@ class _SubCategiresBarState extends State<SubCategiresBar> {
                   bottomLeft: Radius.circular(25),
                 ),
                 image: DecorationImage(
-                  image: AssetImage(
-                    selectedSubId.img,
+                  image: NetworkImage(
+                    currentCategory['image_url'],
                   ),
                   colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.5),
@@ -47,7 +44,7 @@ class _SubCategiresBarState extends State<SubCategiresBar> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Text(
-                selectedSubId.name,
+                currentCategory['name'],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 25,

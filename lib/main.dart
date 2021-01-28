@@ -2,8 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
 import 'package:radovis_tour/provider/sign_in_google_provider.dart';
-import 'package:radovis_tour/widgets/firebase/firebase_screen.dart';
 import 'package:radovis_tour/widgets/map/maps.dart';
 import 'package:provider/provider.dart';
 import 'package:radovis_tour/provider/data_provider.dart';
@@ -34,6 +34,9 @@ void main() async {
           ),
           ChangeNotifierProvider.value(
             value: SignInGoogleProvider(),
+          ),
+          ChangeNotifierProvider.value(
+            value: FirebaseProvider(),
           ),
         ],
         child: MyApp(),

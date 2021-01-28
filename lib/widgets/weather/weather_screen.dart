@@ -228,7 +228,7 @@ class _WeatherScreenState extends State<WeatherScreen>
                                               ),
                                               _weatherCard(
                                                 WeatherIcons.sunset,
-                                                'Sunrise',
+                                                'Sunset',
                                                 '${DateFormat().add_Hm().format(DateTime.parse(theItems.sunset)).toString()}',
                                                 Colors.yellow,
                                               ),

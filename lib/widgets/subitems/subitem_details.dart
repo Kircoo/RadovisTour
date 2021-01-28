@@ -6,8 +6,9 @@ class SubItemDetails extends StatefulWidget {
   final String id;
   final String name;
   final String desc;
-  final double lon;
-  final double lat;
+  final dynamic lon;
+  final dynamic lat;
+  final String imageUrl;
 
   SubItemDetails({
     @required this.id,
@@ -15,6 +16,7 @@ class SubItemDetails extends StatefulWidget {
     @required this.desc,
     @required this.lon,
     @required this.lat,
+    @required this.imageUrl,
   });
 
   @override

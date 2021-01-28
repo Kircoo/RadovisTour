@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
 import 'package:radovis_tour/widgets/subcategories/subcategories_bar.dart';
 import 'package:radovis_tour/widgets/subcategories/subcategories_body.dart';
 
@@ -12,19 +14,14 @@ class SubCategoriesScreen extends StatefulWidget {
 class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   @override
   Widget build(BuildContext context) {
+    final fireSubList = Provider.of<FirebaseProvider>(context).subCats;
     return SafeArea(
       child: Scaffold(
-        // body: CustomScrollView(
-        //   slivers: [
-        //     SubCategiresBar(),
-        //     SubCategoryBody(),
-        //   ],
-        // ),
         body: Column(
           children: [
             SubCategiresBar(),
             Expanded(
-              child: SubCategoryBody(),
+              child: SubCategoryBody(fireSubList: fireSubList,),
             ),
           ],
         ),
