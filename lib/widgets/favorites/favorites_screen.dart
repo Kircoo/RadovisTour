@@ -15,7 +15,6 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
-  final GlobalKey<AnimatedListState> _keyFavorite = GlobalKey();
   var _isInit = true;
   var _isLoading = true;
   var tween = Tween(begin: Offset(1.0, 0.0), end: Offset.zero)
@@ -108,10 +107,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                       onPressed: () {
                                         setState(() {
                                           DBS.delete(
-                                            'visited',
+                                            'favorites',
                                             favoritesList[index].id,
                                             '${favoritesList[index].name}',
-                                            'Visited',
+                                            'Favorites',
                                             context,
                                           );
                                         });

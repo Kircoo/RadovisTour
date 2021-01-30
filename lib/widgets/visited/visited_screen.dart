@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:radovis_tour/data/favorites_list.dart';
 import 'package:radovis_tour/data/visited_list.dart';
 import 'package:radovis_tour/helpers/db_helper.dart';
 import 'package:radovis_tour/provider/data_provider.dart';
@@ -15,7 +14,6 @@ class VisitedScreen extends StatefulWidget {
 }
 
 class _VisitedScreenState extends State<VisitedScreen> {
-  final GlobalKey<AnimatedListState> _keyVisited = GlobalKey();
   var _isInit = true;
   var _isLoading = true;
   var tween = Tween(begin: Offset(1.0, 0.0), end: Offset.zero)

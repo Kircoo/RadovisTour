@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maps_launcher/maps_launcher.dart';
-import 'package:provider/provider.dart';
 import 'package:radovis_tour/helpers/db_helper.dart';
-import 'package:radovis_tour/provider/data_provider.dart';
 
 class SubItemDetails extends StatefulWidget {
   final String id;
