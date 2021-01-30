@@ -11,10 +11,10 @@ class DBS {
     return sql.openDatabase(path.join(dbPath, 'main.db'),
         onCreate: (db, version) {
       db.execute(
-        'CREATE TABLE favorites(id TEXT PRIMARY KEY, name TEXT)',
+        'CREATE TABLE favorites(id TEXT PRIMARY KEY, name TEXT, description TEXT, image_url TEXT, lat INT, lon INT)',
       );
       db.execute(
-        'CREATE TABLE visited(id TEXT PRIMARY KEY, name TEXT)',
+        'CREATE TABLE visited(id TEXT PRIMARY KEY, name TEXT, description TEXT, image_url TEXT, lat INT, lon INT)',
       );
     }, version: 1);
   }

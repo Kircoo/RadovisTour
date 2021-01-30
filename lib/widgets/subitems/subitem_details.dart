@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:maps_launcher/maps_launcher.dart';
+import 'package:provider/provider.dart';
 import 'package:radovis_tour/helpers/db_helper.dart';
+import 'package:radovis_tour/provider/data_provider.dart';
 
 class SubItemDetails extends StatefulWidget {
   final String id;
@@ -27,6 +29,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
   addFavorite(
     String id,
     String name,
+    String description,
+    String imageUrl,
+    dynamic lon,
+    dynamic lat,
     String name1,
     String list,
     BuildContext context,
@@ -37,6 +43,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
         {
           'id': id,
           'name': name,
+          'description': description,
+          'image_url': imageUrl,
+          'lon': lon,
+          'lat': lat,
         },
         name1,
         list,
@@ -48,6 +58,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
   addVisited(
     String id,
     String name,
+    String description,
+    String imageUrl,
+    dynamic lon,
+    dynamic lat,
     String name1,
     String list,
     BuildContext context,
@@ -58,6 +72,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
         {
           'id': id,
           'name': name,
+          'description': description,
+          'image_url': imageUrl,
+          'lon': lon,
+          'lat': lat,
         },
         name1,
         list,
@@ -179,6 +197,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
                               addFavorite(
                                 widget.id,
                                 widget.name,
+                                widget.desc,
+                                widget.imageUrl,
+                                widget.lon,
+                                widget.lat,
                                 '${widget.name}',
                                 'Favorites',
                                 context,
@@ -193,6 +215,7 @@ class _SubItemDetailsState extends State<SubItemDetails> {
                                 context,
                               );
                               favBool = false;
+                              Navigator.pop(context);
                             }
                           });
                         },
@@ -226,6 +249,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
                               addVisited(
                                 widget.id,
                                 widget.name,
+                                widget.desc,
+                                widget.imageUrl,
+                                widget.lon,
+                                widget.lat,
                                 '${widget.name}',
                                 'Visited',
                                 context,
@@ -240,6 +267,7 @@ class _SubItemDetailsState extends State<SubItemDetails> {
                                 context,
                               );
                               visBool = false;
+                              Navigator.pop(context);
                             }
                           });
                         },

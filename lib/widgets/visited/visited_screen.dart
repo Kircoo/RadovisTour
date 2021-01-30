@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:radovis_tour/data/favorites_list.dart';
 import 'package:radovis_tour/data/visited_list.dart';
 import 'package:radovis_tour/helpers/db_helper.dart';
 import 'package:radovis_tour/provider/data_provider.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
 
 class VisitedScreen extends StatefulWidget {
@@ -60,78 +62,70 @@ class _VisitedScreenState extends State<VisitedScreen> {
                             ],
                           ),
                         )
-                      : AnimatedList(
-                          key: _keyVisited,
-                          itemBuilder: (ctx, index, animation) => _buildItem(
-                              visitedList[index].name, index, animation),
-                          initialItemCount: visitedList.length,
+                      : ListView.builder(
+                          itemCount: visitedList.length,
+                          itemBuilder: (ctx, index) => Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: GestureDetector(
+                              onTap: () async {
+                                await Provider.of<FirebaseProvider>(context,
+                                        listen: false)
+                                    .getCurrentItem(
+                                  id: visitedList[index].id,
+                                  name: visitedList[index].name,
+                                  description: visitedList[index].description,
+                                  imageUrl: visitedList[index].imageUrl,
+                                  lon: visitedList[index].lon,
+                                  lat: visitedList[index].lat,
+                                );
+                                print(visitedList[index].id);
+                                Navigator.of(context).pushNamed(
+                                  SubItemScreen.routeName,
+                                );
+                              },
+                              child: Card(
+                                elevation: 5,
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    color: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.2),
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                                child: ListTile(
+                                  title: Text(
+                                    visitedList[index].name,
+                                  ),
+                                  trailing: Builder(
+                                    builder: (context) => IconButton(
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          DBS.delete(
+                                            'visited',
+                                            visitedList[index].id,
+                                            '${visitedList[index].name}',
+                                            'Visited',
+                                            context,
+                                          );
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                 ),
         ),
       ),
     );
-  }
-
-  Widget _buildItem(
-    String item,
-    int index,
-    Animation animation,
-  ) {
-    return SlideTransition(
-      position: animation.drive(tween),
-      child: Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(SubItemScreen.routeName,
-                arguments: visitedList[index].id);
-          },
-          child: Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                color: Theme.of(context).primaryColor.withOpacity(0.2),
-              ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-            ),
-            child: ListTile(
-              title: Text(
-                item,
-              ),
-              trailing: Builder(
-                builder: (context) => IconButton(
-                  icon: Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                  ),
-                  onPressed: () {
-                    _removeItem(index);
-                    setState(() {
-                      DBS.delete(
-                        'visited',
-                        visitedList[index].id,
-                        '${visitedList[index].name}',
-                        'Visited',
-                        context,
-                      );
-                    });
-                  },
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _removeItem(int i) {
-    String removeItem = visitedList[i].name;
-    AnimatedListRemovedItemBuilder builder = (context, animation) {
-      return _buildItem(removeItem, i, animation);
-    };
-    _keyVisited.currentState.removeItem(i, builder);
   }
 }

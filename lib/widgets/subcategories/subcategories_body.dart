@@ -68,13 +68,13 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                   onTap: () async {
                     await Provider.of<FirebaseProvider>(context, listen: false)
                         .getCurrentItem(
-                            name: fireSubList[index].data()['name'],
-                            description:
-                                fireSubList[index].data()['description'],
-                            lat: fireSubList[index].data()['lat'],
-                            lon: fireSubList[index].data()['lon'],
-                            id: fireSubList[index].id,
-                            imageUrl: fireSubList[index].data()['image_url']);
+                      name: fireSubList[index].data()['name'],
+                      description: fireSubList[index].data()['description'],
+                      lat: fireSubList[index].data()['lat'],
+                      lon: fireSubList[index].data()['lon'],
+                      id: fireSubList[index].id,
+                      imageUrl: fireSubList[index].data()['image_url'],
+                    );
 
                     Navigator.of(context).pushNamed(SubItemScreen.routeName);
                   },
@@ -130,25 +130,6 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                                   ),
                                 ),
                               ),
-                              Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Material(
-                                  color: Colors.transparent.withOpacity(0),
-                                  child: ListTile(
-                                    leading: Text(
-                                      fireSubList[index].data()['name'],
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    trailing: Icon(
-                                      Icons.info,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                         ),
@@ -158,40 +139,36 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                 ),
               ),
             ),
-            // Container(
-            //   decoration: BoxDecoration(
-            //     borderRadius: BorderRadius.all(
-            //       Radius.circular(10),
-            //     ),
-            //   ),
-            //   width: double.infinity,
-            //   height: MediaQuery.of(context).size.height * 0.13,
-            //   child: Card(
-            //     shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.all(
-            //         Radius.circular(10),
-            //       ),
-            //     ),
-            //     color: Colors.red,
-            //     child: Padding(
-            //       padding: const EdgeInsets.all(8.0),
-            //       child: Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           Text('vvmro'),
-            //           Row(
-            //             children: [
-            //               Icon(Icons.ac_unit),
-            //               Icon(Icons.access_alarm),
-            //               Icon(Icons.accessibility),
-            //             ],
-            //           )
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.08,
+              child: Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                color: Theme.of(context).primaryColor.withOpacity(0.9),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text(
+                      fireSubList[index].data()['name'],
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         );
       },
