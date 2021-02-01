@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:radovis_tour/data/subcategories_list.dart';
 
 class SubItemBar extends StatefulWidget {
+  final dynamic id;
+  final String name;
+  final String imageUrl;
+
+  SubItemBar({
+    @required this.id,
+    @required this.name,
+    @required this.imageUrl,
+  });
   @override
   _SubItemBarState createState() => _SubItemBarState();
 }
@@ -9,16 +17,13 @@ class SubItemBar extends StatefulWidget {
 class _SubItemBarState extends State<SubItemBar> {
   @override
   Widget build(BuildContext context) {
-    final subCatItemId = ModalRoute.of(context).settings.arguments as String;
-    final selectedSubId =
-        subcategories.firstWhere((subItem) => subItem.id == subCatItemId);
     return SliverAppBar(
       backgroundColor: Colors.transparent,
       pinned: true,
       flexibleSpace: Stack(
         children: [
           Hero(
-            tag: selectedSubId.id,
+            tag: widget.id,
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
@@ -27,8 +32,8 @@ class _SubItemBarState extends State<SubItemBar> {
                   bottomLeft: Radius.circular(25),
                 ),
                 image: DecorationImage(
-                  image: AssetImage(
-                    selectedSubId.image,
+                  image: NetworkImage(
+                    widget.imageUrl,
                   ),
                   colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.3),
@@ -46,7 +51,7 @@ class _SubItemBarState extends State<SubItemBar> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Text(
-                selectedSubId.name,
+                widget.name,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 25,

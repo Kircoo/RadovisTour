@@ -4,6 +4,7 @@ import 'package:radovis_tour/data/favorites_list.dart';
 import 'package:radovis_tour/helpers/db_helper.dart';
 
 import 'package:radovis_tour/provider/data_provider.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -14,7 +15,6 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
-  final GlobalKey<AnimatedListState> _keyFavorite = GlobalKey();
   var _isInit = true;
   var _isLoading = true;
   var tween = Tween(begin: Offset(1.0, 0.0), end: Offset.zero)
@@ -56,83 +56,79 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              Container(
+                                height: 200,
+                                child: Image.asset('assets/splashlogo.png'),
+                              ),
                               Text('Your favorite list is empty!'),
                               Icon(Icons.sentiment_dissatisfied),
                             ],
                           ),
                         )
-                      : AnimatedList(
-                          key: _keyFavorite,
-                          itemBuilder: (ctx, index, animation) => _buildItem(
-                              favoritesList[index].name, index, animation),
-                          initialItemCount: favoritesList.length,
+                      : ListView.builder(
+                          itemCount: favoritesList.length,
+                          itemBuilder: (ctx, index) => Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: GestureDetector(
+                              onTap: () async {
+                                await Provider.of<FirebaseProvider>(context,
+                                        listen: false)
+                                    .getCurrentItem(
+                                  id: favoritesList[index].id,
+                                  name: favoritesList[index].name,
+                                  description: favoritesList[index].description,
+                                  imageUrl: favoritesList[index].imageUrl,
+                                  lon: favoritesList[index].lon,
+                                  lat: favoritesList[index].lat,
+                                );
+                                print(favoritesList[index].id);
+                                Navigator.of(context).pushNamed(
+                                  SubItemScreen.routeName,
+                                );
+                              },
+                              child: Card(
+                                elevation: 5,
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    color: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.2),
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                                child: ListTile(
+                                  title: Text(
+                                    favoritesList[index].name,
+                                  ),
+                                  trailing: Builder(
+                                    builder: (context) => IconButton(
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          DBS.delete(
+                                            'favorites',
+                                            favoritesList[index].id,
+                                            '${favoritesList[index].name}',
+                                            'Favorites',
+                                            context,
+                                          );
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                 ),
         ),
       ),
     );
-  }
-
-  Widget _buildItem(
-    String item,
-    int index,
-    Animation animation,
-  ) {
-    return SlideTransition(
-      position: animation.drive(tween),
-      child: Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(SubItemScreen.routeName,
-                arguments: favoritesList[index].id);
-          },
-          child: Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                color: Theme.of(context).primaryColor.withOpacity(0.2),
-              ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-            ),
-            child: ListTile(
-              title: Text(
-                item,
-              ),
-              trailing: Builder(
-                builder: (context) => IconButton(
-                  icon: Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                  ),
-                  onPressed: () {
-                    _removeItem(index);
-                    setState(() {
-                      DBS.delete(
-                        'Favorites',
-                        favoritesList[index].id,
-                        '${favoritesList[index].name}',
-                        'Favorites',
-                        context,
-                      );
-                    });
-                  },
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _removeItem(int i) {
-    String removeItem = favoritesList[i].name;
-    AnimatedListRemovedItemBuilder builder = (context, animation) {
-      return _buildItem(removeItem, i, animation);
-    };
-    _keyFavorite.currentState.removeItem(i, builder);
   }
 }

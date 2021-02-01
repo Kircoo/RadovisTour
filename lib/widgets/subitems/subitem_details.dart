@@ -6,8 +6,9 @@ class SubItemDetails extends StatefulWidget {
   final String id;
   final String name;
   final String desc;
-  final double lon;
-  final double lat;
+  final dynamic lon;
+  final dynamic lat;
+  final String imageUrl;
 
   SubItemDetails({
     @required this.id,
@@ -15,6 +16,7 @@ class SubItemDetails extends StatefulWidget {
     @required this.desc,
     @required this.lon,
     @required this.lat,
+    @required this.imageUrl,
   });
 
   @override
@@ -25,6 +27,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
   addFavorite(
     String id,
     String name,
+    String description,
+    String imageUrl,
+    dynamic lon,
+    dynamic lat,
     String name1,
     String list,
     BuildContext context,
@@ -35,6 +41,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
         {
           'id': id,
           'name': name,
+          'description': description,
+          'image_url': imageUrl,
+          'lon': lon,
+          'lat': lat,
         },
         name1,
         list,
@@ -46,6 +56,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
   addVisited(
     String id,
     String name,
+    String description,
+    String imageUrl,
+    dynamic lon,
+    dynamic lat,
     String name1,
     String list,
     BuildContext context,
@@ -56,6 +70,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
         {
           'id': id,
           'name': name,
+          'description': description,
+          'image_url': imageUrl,
+          'lon': lon,
+          'lat': lat,
         },
         name1,
         list,
@@ -177,6 +195,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
                               addFavorite(
                                 widget.id,
                                 widget.name,
+                                widget.desc,
+                                widget.imageUrl,
+                                widget.lon,
+                                widget.lat,
                                 '${widget.name}',
                                 'Favorites',
                                 context,
@@ -224,6 +246,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
                               addVisited(
                                 widget.id,
                                 widget.name,
+                                widget.desc,
+                                widget.imageUrl,
+                                widget.lon,
+                                widget.lat,
                                 '${widget.name}',
                                 'Visited',
                                 context,

@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
+import 'package:radovis_tour/provider/sign_in_google_provider.dart';
 import 'package:radovis_tour/widgets/map/maps.dart';
 import 'package:provider/provider.dart';
 import 'package:radovis_tour/provider/data_provider.dart';
@@ -10,13 +13,15 @@ import 'package:radovis_tour/widgets/aboutitems/aboutitem_screen.dart';
 import 'package:radovis_tour/widgets/categories/categories_screen.dart';
 import 'package:radovis_tour/helpers/custom_page_route.dart';
 import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
+import 'package:radovis_tour/widgets/signin/sign_in.dart';
 import 'package:radovis_tour/widgets/subcategories/subcategories_screen.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
 import 'package:radovis_tour/widgets/visited/visited_screen.dart';
 import 'package:radovis_tour/widgets/weather/weather_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (value) => runApp(
       MultiProvider(
@@ -26,6 +31,12 @@ void main() {
           ),
           ChangeNotifierProvider.value(
             value: DataProvider(),
+          ),
+          ChangeNotifierProvider.value(
+            value: SignInGoogleProvider(),
+          ),
+          ChangeNotifierProvider.value(
+            value: FirebaseProvider(),
           ),
         ],
         child: MyApp(),
@@ -65,6 +76,7 @@ class MyApp extends StatelessWidget {
         VisitedScreen.routeName: (ctx) => VisitedScreen(),
         WeatherScreen.routeName: (ctx) => WeatherScreen(),
         RadovisMaps.routeName: (ctx) => RadovisMaps(),
+        SignInUser.routeName: (ctx) => SignInUser(),
       },
     );
   }
@@ -72,8 +84,13 @@ class MyApp extends StatelessWidget {
 
 /// Home Page Class
 class HomePageApp extends StatelessWidget {
+  final List<IconData> icons = [
+    Icons.location_city,
+    Icons.nature,
+    Icons.nature,
+  ];
   @override
   Widget build(BuildContext context) {
-    return CategoriesScreen();
+    return SignInUser();
   }
 }

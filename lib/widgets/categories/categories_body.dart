@@ -1,61 +1,124 @@
 import 'package:flutter/material.dart';
-import 'package:radovis_tour/data/categories_list.dart';
+import 'package:provider/provider.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
 import 'package:radovis_tour/widgets/subcategories/subcategories_screen.dart';
 
 /// SliverList Categories
-class CategoriesBody extends StatelessWidget {
+class CategoriesBody extends StatefulWidget {
+  @override
+  _CategoriesBodyState createState() => _CategoriesBodyState();
+}
+
+class _CategoriesBodyState extends State<CategoriesBody> {
+  List<IconData> icons = [
+    Icons.location_city,
+    Icons.nature,
+    Icons.nature,
+    Icons.nature,
+    Icons.local_drink,
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(SubCategoriesScreen.routeName,
-                  arguments: categories[index].id);
-            },
-            child: Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20),
+    return FutureBuilder(
+      future: Provider.of<FirebaseProvider>(context, listen: false)
+          .getFireStoreCategories(categories: 'categories'),
+      builder: (ctx, snapshot) {
+        if (!snapshot.hasData)
+          return SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => Container(
+                height: MediaQuery.of(context).size.height * 0.5,
+                width: double.infinity,
+                child: Center(
+                  child: CircularProgressIndicator(),
                 ),
               ),
-              child: Column(
-                children: [
-                  Hero(
-                    tag: categories[index].id,
-                    child: Container(
-                      height: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        ),
-                        image: DecorationImage(
-                          image: AssetImage(
-                            categories[index].img,
+              childCount: 1,
+            ),
+          );
+        return SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                onTap: () async {
+                  await Provider.of<FirebaseProvider>(context, listen: false)
+                      .getFireStoreSubCategories(
+                    subCategories: snapshot.data.documents[index]['collection'],
+                  );
+                  await Provider.of<FirebaseProvider>(context, listen: false)
+                      .getCurrentFireStreCategoryData(
+                    categories: 'categories',
+                    index: index,
+                  );
+                  Navigator.of(context)
+                      .pushNamed(SubCategoriesScreen.routeName);
+                },
+                child: Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Hero(
+                        tag: snapshot.data.documents[index]['catId'],
+                        child: Container(
+                          height: 100,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
                           ),
-                          fit: BoxFit.cover,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
+                            child: Image.network(
+                              snapshot.data.documents[index]['image_url'],
+                              fit: BoxFit.cover,
+                              colorBlendMode: BlendMode.darken,
+                              loadingBuilder: (BuildContext context,
+                                  Widget child,
+                                  ImageChunkEvent loadingProgress) {
+                                if (loadingProgress == null) return child;
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    value: loadingProgress.expectedTotalBytes !=
+                                            null
+                                        ? loadingProgress
+                                                .cumulativeBytesLoaded /
+                                            loadingProgress.expectedTotalBytes
+                                        : null,
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      ListTile(
+                        title: Text(snapshot.data.documents[index]['name']),
+                        trailing: Icon(
+                          icons[index],
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
-                  ListTile(
-                    title: Text(categories[index].name),
-                    trailing: Icon(
-                      categories[index].icon,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
+            childCount: snapshot.data.documents.length,
           ),
-        ),
-        childCount: categories.length,
-      ),
+        );
+      },
     );
   }
 }

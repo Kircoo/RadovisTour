@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_bar.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_body.dart';
 
@@ -31,13 +33,25 @@ class _SubItemScreenState extends State<SubItemScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final currentItem = Provider.of<FirebaseProvider>(context).currentItem;
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
           controller: _scrollController,
           slivers: [
-            SubItemBar(),
-            SubItemBody(),
+            SubItemBar(
+              id: currentItem.id,
+              name: currentItem.name,
+              imageUrl: currentItem.imageUrl,
+            ),
+            SubItemBody(
+              id: currentItem.id,
+              name: currentItem.name,
+              desc: currentItem.description,
+              lon: currentItem.lon,
+              lat: currentItem.lat,
+              imageUrl: currentItem.imageUrl,
+            ),
           ],
         ),
         floatingActionButton: !showFab

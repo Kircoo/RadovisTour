@@ -1,32 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:radovis_tour/data/subcategories_list.dart';
-import 'package:radovis_tour/models/subcategories_model.dart';
+import 'package:provider/provider.dart';
+import 'package:radovis_tour/provider/firebase_provider.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
 
 class SubCategoryBody extends StatefulWidget {
+  final List<dynamic> fireSubList;
+
+  SubCategoryBody({
+    this.fireSubList,
+  });
+
   @override
   _SubCategoryBodyState createState() => _SubCategoryBodyState();
 }
 
 class _SubCategoryBodyState extends State<SubCategoryBody> {
-  List<SubCategories> displayedSubCategories;
-  var trst = false;
   int selectedPage = 0;
   PageController _pageController;
-
-  /// Gets the items by ARGUMENTS
-  @override
-  void didChangeDependencies() {
-    if (!trst) {
-      final routeArgs = ModalRoute.of(context).settings.arguments as int;
-      final subCategoryId = routeArgs;
-      displayedSubCategories = subcategories
-          .where((sub) => sub.categoryId == subCategoryId)
-          .toList();
-      trst = true;
-    }
-    super.didChangeDependencies();
-  }
 
   @override
   void initState() {
@@ -47,12 +38,18 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
           selectedPage = index;
         });
       },
-      itemBuilder: (ctx, index) => _items(index),
-      itemCount: displayedSubCategories.length,
+      itemBuilder: (ctx, index) => _items(
+        index,
+        widget.fireSubList,
+      ),
+      itemCount: widget.fireSubList.length,
     );
   }
 
-  Widget _items(int index) {
+  Widget _items(
+    int index,
+    List<QueryDocumentSnapshot> fireSubList,
+  ) {
     return AnimatedBuilder(
       animation: _pageController,
       builder: (ctx, widget) {
@@ -68,52 +65,72 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 0),
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(SubItemScreen.routeName,
-                        arguments: displayedSubCategories[index].id);
-                    
+                  onTap: () async {
+                    await Provider.of<FirebaseProvider>(context, listen: false)
+                        .getCurrentItem(
+                      name: fireSubList[index].data()['name'],
+                      description: fireSubList[index].data()['description'],
+                      lat: fireSubList[index].data()['lat'],
+                      lon: fireSubList[index].data()['lon'],
+                      id: fireSubList[index].id,
+                      imageUrl: fireSubList[index].data()['image_url'],
+                    );
+
+                    Navigator.of(context).pushNamed(SubItemScreen.routeName);
                   },
                   child: Stack(
                     children: [
                       Hero(
-                        tag: displayedSubCategories[index].id,
+                        tag: fireSubList[index].id,
                         child: Container(
-                          height: Curves.easeInOut.transform(value) * MediaQuery.of(context).size.height * 0.6,
+                          height: Curves.easeInOut.transform(value) *
+                              MediaQuery.of(context).size.height *
+                              0.6,
                           width: Curves.easeInOut.transform(value) * 300,
                           margin: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(
                               Radius.circular(20),
                             ),
-                            image: DecorationImage(
-                              colorFilter: ColorFilter.mode(
-                                Colors.black.withOpacity(0.5),
-                                BlendMode.darken,
-                              ),
-                              image: AssetImage(
-                                displayedSubCategories[index].image,
-                              ),
-                              fit: BoxFit.cover,
-                            ),
                           ),
-                          child: Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Material(
-                              color: Colors.transparent.withOpacity(0),
-                              child: ListTile(
-                                leading: Text(
-                                  displayedSubCategories[index].name,
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color: Colors.white,
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.withOpacity(0.2),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
                                   ),
                                 ),
-                                trailing: Icon(
-                                  Icons.info,
-                                  color: Colors.white,
+                                height: double.infinity,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: Image.network(
+                                    fireSubList[index].data()['image_url'],
+                                    color: Colors.black.withOpacity(0.5),
+                                    fit: BoxFit.cover,
+                                    colorBlendMode: BlendMode.darken,
+                                    loadingBuilder: (BuildContext context,
+                                        Widget child,
+                                        ImageChunkEvent loadingProgress) {
+                                      if (loadingProgress == null) return child;
+                                      return Center(
+                                        child: CircularProgressIndicator(
+                                          value: loadingProgress
+                                                      .expectedTotalBytes !=
+                                                  null
+                                              ? loadingProgress
+                                                      .cumulativeBytesLoaded /
+                                                  loadingProgress
+                                                      .expectedTotalBytes
+                                              : null,
+                                        ),
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                       ),
@@ -122,40 +139,51 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                 ),
               ),
             ),
-            // Container(
-            //   decoration: BoxDecoration(
-            //     borderRadius: BorderRadius.all(
-            //       Radius.circular(10),
-            //     ),
-            //   ),
-            //   width: double.infinity,
-            //   height: MediaQuery.of(context).size.height * 0.13,
-            //   child: Card(
-            //     shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.all(
-            //         Radius.circular(10),
-            //       ),
-            //     ),
-            //     color: Colors.red,
-            //     child: Padding(
-            //       padding: const EdgeInsets.all(8.0),
-            //       child: Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           Text('vvmro'),
-            //           Row(
-            //             children: [
-            //               Icon(Icons.ac_unit),
-            //               Icon(Icons.access_alarm),
-            //               Icon(Icons.accessibility),
-            //             ],
-            //           )
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
+            GestureDetector(
+              onTap: () async {
+                await Provider.of<FirebaseProvider>(context, listen: false)
+                    .getCurrentItem(
+                  name: fireSubList[index].data()['name'],
+                  description: fireSubList[index].data()['description'],
+                  lat: fireSubList[index].data()['lat'],
+                  lon: fireSubList[index].data()['lon'],
+                  id: fireSubList[index].id,
+                  imageUrl: fireSubList[index].data()['image_url'],
+                );
+
+                Navigator.of(context).pushNamed(SubItemScreen.routeName);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.08,
+                child: Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  color: Theme.of(context).primaryColor.withOpacity(0.9),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        fireSubList[index].data()['name'],
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         );
       },

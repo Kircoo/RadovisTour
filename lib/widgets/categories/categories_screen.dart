@@ -28,6 +28,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           ],
         ),
         floatingActionButton: CircularMenu(
+            startingAngleInRadian: 3.2,
+            endingAngleInRadian: 4.5,
             curve: Curves.linearToEaseOut,
             reverseCurve: Curves.easeInToLinear,
             toggleButtonColor: Theme.of(context).primaryColor,

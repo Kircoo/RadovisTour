@@ -16,6 +16,10 @@ class DataProvider with ChangeNotifier {
           (e) => Favorites(
             id: e['id'],
             name: e['name'],
+            description: e['description'],
+            imageUrl: e['image_url'],
+            lat: e['lat'],
+            lon: e['lon'],
           ),
         )
         .toList();
@@ -30,6 +34,10 @@ class DataProvider with ChangeNotifier {
           (e) => Visited(
             id: e['id'],
             name: e['name'],
+            description: e['description'],
+            imageUrl: e['image_url'],
+            lat: e['lat'],
+            lon: e['lon'],
           ),
         )
         .toList();
