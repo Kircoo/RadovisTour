@@ -139,30 +139,45 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                 ),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.08,
-              child: Card(
-                elevation: 10,
-                shape: RoundedRectangleBorder(
+            GestureDetector(
+              onTap: () async {
+                await Provider.of<FirebaseProvider>(context, listen: false)
+                    .getCurrentItem(
+                  name: fireSubList[index].data()['name'],
+                  description: fireSubList[index].data()['description'],
+                  lat: fireSubList[index].data()['lat'],
+                  lon: fireSubList[index].data()['lon'],
+                  id: fireSubList[index].id,
+                  imageUrl: fireSubList[index].data()['image_url'],
+                );
+
+                Navigator.of(context).pushNamed(SubItemScreen.routeName);
+              },
+              child: Container(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(10),
                   ),
                 ),
-                color: Theme.of(context).primaryColor.withOpacity(0.9),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      fireSubList[index].data()['name'],
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.08,
+                child: Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  color: Theme.of(context).primaryColor.withOpacity(0.9),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        fireSubList[index].data()['name'],
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
                       ),
                     ),
                   ),

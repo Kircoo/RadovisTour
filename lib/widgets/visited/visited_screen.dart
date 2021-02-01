@@ -55,6 +55,10 @@ class _VisitedScreenState extends State<VisitedScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              Container(
+                                height: 200,
+                                child: Image.asset('assets/splashlogo.png'),
+                              ),
                               Text('Your visited list is empty!'),
                               Icon(Icons.sentiment_dissatisfied),
                             ],

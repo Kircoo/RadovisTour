@@ -56,6 +56,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              Container(
+                                height: 200,
+                                child: Image.asset('assets/splashlogo.png'),
+                              ),
                               Text('Your favorite list is empty!'),
                               Icon(Icons.sentiment_dissatisfied),
                             ],
