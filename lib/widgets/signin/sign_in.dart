@@ -34,9 +34,11 @@ class _SignInUserState extends State<SignInUser> {
                   width: 200,
                   color: Theme.of(context).primaryColor,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Image.asset('assets/radovislogo1.png'),
+                      Image.asset(
+                        'assets/newLogo.png',
+                      ),
                       InkWell(
                         child: RaisedButton(
                           shape: RoundedRectangleBorder(
@@ -67,7 +69,10 @@ class _SignInUserState extends State<SignInUser> {
                           elevation: 20,
                           color: Colors.white,
                           splashColor: Colors.greenAccent,
-                          child: Text('Continue without account', style: TextStyle(fontSize: 13),),
+                          child: Text(
+                            'Continue without account',
+                            style: TextStyle(fontSize: 13),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pushNamedAndRemoveUntil(
                                 CategoriesScreen.routeName, (route) => false);

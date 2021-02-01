@@ -50,16 +50,16 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.7.5
-  flutter_native_splash: ^0.1.9
+  flutter_launcher_icons: ^0.8.1
+  flutter_native_splash: ^0.2.9
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/radovislogo1.png"
+  image_path: "assets/newLogo.png"
   adaptive_icon_background: "#990000"
 flutter_native_splash:
-  image: assets/trancirclogo1.png
+  image: assets/splashlogo.png
   color: "#990000"
   android_disable_fullscreen: true
 
@@ -79,7 +79,6 @@ flutter:
     - assets/images/categories/
     - assets/images/subcategories/
     - assets/images/weather/
-    - assets/images/about/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
