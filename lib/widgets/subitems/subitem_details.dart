@@ -213,7 +213,6 @@ class _SubItemDetailsState extends State<SubItemDetails> {
                                 context,
                               );
                               favBool = false;
-                              Navigator.pop(context);
                             }
                           });
                         },
@@ -265,7 +264,6 @@ class _SubItemDetailsState extends State<SubItemDetails> {
                                 context,
                               );
                               visBool = false;
-                              Navigator.pop(context);
                             }
                           });
                         },
