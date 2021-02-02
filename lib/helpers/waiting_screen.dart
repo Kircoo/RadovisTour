@@ -17,7 +17,7 @@ class WaitingScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset('assets/radovislogo1.png'),
+                  Image.asset('assets/newLogo.png'),
                   CircularProgressIndicator(),
                 ],
               ),
