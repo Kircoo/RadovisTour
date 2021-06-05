@@ -33,7 +33,7 @@ dependencies:
   firebase_messaging: ^7.0.3
   flushbar: ^1.10.4
   flutter_spinkit: ^4.1.2+1
-  flutter_svg: ^0.18.0
+  flutter_svg: ^0.21.0-nullsafety.0
   google_fonts: ^1.1.0
   google_maps_flutter: ^0.5.28+1
   google_sign_in: ^4.5.9
@@ -50,8 +50,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.8.1
-  flutter_native_splash: ^0.2.9
+  flutter_launcher_icons: ^0.9.0
+  flutter_native_splash: ^1.0.1
 
 flutter_icons:
   android: "launcher_icon"
