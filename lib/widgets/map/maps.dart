@@ -24,15 +24,6 @@ class _RadovisMapsState extends State<RadovisMaps> {
     final markers = Provider.of<FirebaseProvider>(context).mark;
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
         backgroundColor: Theme.of(context).primaryColor,
         title: Text(
           'Radovish Map',

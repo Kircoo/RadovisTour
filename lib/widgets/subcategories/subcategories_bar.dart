@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:radovis_tour/provider/firebase_provider.dart';
@@ -53,14 +55,20 @@ class _SubCategiresBarState extends State<SubCategiresBar> {
             ),
           ),
           SafeArea(
-            child: IconButton(
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 4.0,
+                top: 4.0,
               ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              child: IconButton(
+                icon: Icon(
+                  Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
           )
         ],
