@@ -22,19 +22,33 @@ class _RadovisMapsState extends State<RadovisMaps> {
   @override
   Widget build(BuildContext context) {
     final markers = Provider.of<FirebaseProvider>(context).mark;
-    return SafeArea(
-      child: Scaffold(
-        body: FutureBuilder(
-          future: Provider.of<FirebaseProvider>(context, listen: false)
-              .getMarkers(),
-          builder: (ctx, snapShot) => GoogleMap(
-            mapType: MapType.normal,
-            initialCameraPosition: _radovisPosition,
-            onMapCreated: (GoogleMapController controller) {
-              _completer.complete(controller);
-            },
-            markers: markers,
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
           ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text(
+          'Radovish Map',
+        ),
+      ),
+      body: FutureBuilder(
+        future:
+            Provider.of<FirebaseProvider>(context, listen: false).getMarkers(),
+        builder: (ctx, snapShot) => GoogleMap(
+          myLocationButtonEnabled: false,
+          mapType: MapType.normal,
+          initialCameraPosition: _radovisPosition,
+          onMapCreated: (GoogleMapController controller) {
+            _completer.complete(controller);
+          },
+          markers: markers,
         ),
       ),
     );

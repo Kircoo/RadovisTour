@@ -68,12 +68,12 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                   onTap: () async {
                     await Provider.of<FirebaseProvider>(context, listen: false)
                         .getCurrentItem(
-                      name: fireSubList[index].data()['name'],
-                      description: fireSubList[index].data()['description'],
-                      lat: fireSubList[index].data()['lat'],
-                      lon: fireSubList[index].data()['lon'],
+                      name: fireSubList[index]['name'],
+                      description: fireSubList[index]['description'],
+                      lat: fireSubList[index]['lat'],
+                      lon: fireSubList[index]['lon'],
                       id: fireSubList[index].id,
-                      imageUrl: fireSubList[index].data()['image_url'],
+                      imageUrl: fireSubList[index]['image_url'],
                     );
 
                     Navigator.of(context).pushNamed(SubItemScreen.routeName);
@@ -106,7 +106,7 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20.0),
                                   child: Image.network(
-                                    fireSubList[index].data()['image_url'],
+                                    fireSubList[index]['image_url'],
                                     color: Colors.black.withOpacity(0.5),
                                     fit: BoxFit.cover,
                                     colorBlendMode: BlendMode.darken,
@@ -143,12 +143,12 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
               onTap: () async {
                 await Provider.of<FirebaseProvider>(context, listen: false)
                     .getCurrentItem(
-                  name: fireSubList[index].data()['name'],
-                  description: fireSubList[index].data()['description'],
-                  lat: fireSubList[index].data()['lat'],
-                  lon: fireSubList[index].data()['lon'],
+                  name: fireSubList[index]['name'],
+                  description: fireSubList[index]['description'],
+                  lat: fireSubList[index]['lat'],
+                  lon: fireSubList[index]['lon'],
                   id: fireSubList[index].id,
-                  imageUrl: fireSubList[index].data()['image_url'],
+                  imageUrl: fireSubList[index]['image_url'],
                 );
 
                 Navigator.of(context).pushNamed(SubItemScreen.routeName);
@@ -173,7 +173,7 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
                       child: Text(
-                        fireSubList[index].data()['name'],
+                        fireSubList[index]['name'],
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 17,

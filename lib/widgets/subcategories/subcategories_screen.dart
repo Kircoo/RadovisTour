@@ -15,16 +15,16 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     final fireSubList = Provider.of<FirebaseProvider>(context).subCats;
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            SubCategiresBar(),
-            Expanded(
-              child: SubCategoryBody(fireSubList: fireSubList,),
+    return Scaffold(
+      body: Column(
+        children: [
+          SubCategiresBar(),
+          Expanded(
+            child: SubCategoryBody(
+              fireSubList: fireSubList,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

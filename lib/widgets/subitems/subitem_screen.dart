@@ -34,39 +34,37 @@ class _SubItemScreenState extends State<SubItemScreen> {
   @override
   Widget build(BuildContext context) {
     final currentItem = Provider.of<FirebaseProvider>(context).currentItem;
-    return SafeArea(
-      child: Scaffold(
-        body: CustomScrollView(
-          controller: _scrollController,
-          slivers: [
-            SubItemBar(
-              id: currentItem.id,
-              name: currentItem.name,
-              imageUrl: currentItem.imageUrl,
-            ),
-            SubItemBody(
-              id: currentItem.id,
-              name: currentItem.name,
-              desc: currentItem.description,
-              lon: currentItem.lon,
-              lat: currentItem.lat,
-              imageUrl: currentItem.imageUrl,
-            ),
-          ],
-        ),
-        floatingActionButton: !showFab
-            ? null
-            : FloatingActionButton(
-                backgroundColor: Theme.of(context).primaryColor,
-                mini: true,
-                onPressed: () {
-                  _scrollController.animateTo(0,
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.linear);
-                },
-                child: Icon(Icons.arrow_drop_up),
-              ),
+    return Scaffold(
+      body: CustomScrollView(
+        controller: _scrollController,
+        slivers: [
+          SubItemBar(
+            id: currentItem.id,
+            name: currentItem.name,
+            imageUrl: currentItem.imageUrl,
+          ),
+          SubItemBody(
+            id: currentItem.id,
+            name: currentItem.name,
+            desc: currentItem.description,
+            lon: currentItem.lon,
+            lat: currentItem.lat,
+            imageUrl: currentItem.imageUrl,
+          ),
+        ],
       ),
+      floatingActionButton: !showFab
+          ? null
+          : FloatingActionButton(
+              backgroundColor: Theme.of(context).primaryColor,
+              mini: true,
+              onPressed: () {
+                _scrollController.animateTo(0,
+                    duration: Duration(milliseconds: 500),
+                    curve: Curves.linear);
+              },
+              child: Icon(Icons.arrow_drop_up),
+            ),
     );
   }
 

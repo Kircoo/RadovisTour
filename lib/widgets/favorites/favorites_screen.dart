@@ -38,96 +38,95 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Favorites'),
-        ),
-        body: Container(
-          child: _isLoading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : FutureBuilder(
-                  future: Provider.of<DataProvider>(context, listen: false)
-                      .fetchFavorites(),
-                  builder: (ctx, snapshot) => favoritesList.isEmpty
-                      ? Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                height: 200,
-                                child: Image.asset('assets/splashlogo.png'),
-                              ),
-                              Text('Your favorite list is empty!'),
-                              Icon(Icons.sentiment_dissatisfied),
-                            ],
-                          ),
-                        )
-                      : ListView.builder(
-                          itemCount: favoritesList.length,
-                          itemBuilder: (ctx, index) => Padding(
-                            padding: const EdgeInsets.all(6.0),
-                            child: GestureDetector(
-                              onTap: () async {
-                                await Provider.of<FirebaseProvider>(context,
-                                        listen: false)
-                                    .getCurrentItem(
-                                  id: favoritesList[index].id,
-                                  name: favoritesList[index].name,
-                                  description: favoritesList[index].description,
-                                  imageUrl: favoritesList[index].imageUrl,
-                                  lon: favoritesList[index].lon,
-                                  lat: favoritesList[index].lat,
-                                );
-                                print(favoritesList[index].id);
-                                Navigator.of(context).pushNamed(
-                                  SubItemScreen.routeName,
-                                );
-                              },
-                              child: Card(
-                                elevation: 5,
-                                shape: RoundedRectangleBorder(
-                                  side: BorderSide(
-                                    color: Theme.of(context)
-                                        .primaryColor
-                                        .withOpacity(0.2),
-                                  ),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20),
-                                  ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text('Favorites'),
+      ),
+      body: Container(
+        child: _isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : FutureBuilder(
+                future: Provider.of<DataProvider>(context, listen: false)
+                    .fetchFavorites(),
+                builder: (ctx, snapshot) => favoritesList.isEmpty
+                    ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 200,
+                              child: Image.asset('assets/splashlogo.png'),
+                            ),
+                            Text('Your favorite list is empty!'),
+                            Icon(Icons.sentiment_dissatisfied),
+                          ],
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: favoritesList.length,
+                        itemBuilder: (ctx, index) => Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: GestureDetector(
+                            onTap: () async {
+                              await Provider.of<FirebaseProvider>(context,
+                                      listen: false)
+                                  .getCurrentItem(
+                                id: favoritesList[index].id,
+                                name: favoritesList[index].name,
+                                description: favoritesList[index].description,
+                                imageUrl: favoritesList[index].imageUrl,
+                                lon: favoritesList[index].lon,
+                                lat: favoritesList[index].lat,
+                              );
+                              print(favoritesList[index].id);
+                              Navigator.of(context).pushNamed(
+                                SubItemScreen.routeName,
+                              );
+                            },
+                            child: Card(
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  color: Theme.of(context)
+                                      .primaryColor
+                                      .withOpacity(0.2),
                                 ),
-                                child: ListTile(
-                                  title: Text(
-                                    favoritesList[index].name,
-                                  ),
-                                  trailing: Builder(
-                                    builder: (context) => IconButton(
-                                      icon: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          DBS.delete(
-                                            'favorites',
-                                            favoritesList[index].id,
-                                            '${favoritesList[index].name}',
-                                            'Favorites',
-                                            context,
-                                          );
-                                        });
-                                      },
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              child: ListTile(
+                                title: Text(
+                                  favoritesList[index].name,
+                                ),
+                                trailing: Builder(
+                                  builder: (context) => IconButton(
+                                    icon: Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
                                     ),
+                                    onPressed: () {
+                                      setState(() {
+                                        DBS.delete(
+                                          'favorites',
+                                          favoritesList[index].id,
+                                          '${favoritesList[index].name}',
+                                          'Favorites',
+                                          context,
+                                        );
+                                      });
+                                    },
                                   ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                ),
-        ),
+                      ),
+              ),
       ),
     );
   }

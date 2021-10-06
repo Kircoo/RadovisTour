@@ -18,45 +18,44 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        drawer: AppDrawer(),
-        body: CustomScrollView(
-          slivers: [
-            CategoriesBar(),
-            CategoriesBody(),
-          ],
-        ),
-        floatingActionButton: CircularMenu(
-            startingAngleInRadian: 3.2,
-            endingAngleInRadian: 4.5,
-            curve: Curves.linearToEaseOut,
-            reverseCurve: Curves.easeInToLinear,
-            toggleButtonColor: Theme.of(context).primaryColor,
-            alignment: Alignment.bottomRight,
-            items: [
-              CircularMenuItem(
-                onTap: () {
-                  Navigator.of(context).pushNamed(FavoriteScreen.routeName);
-                },
-                icon: Icons.favorite,
-                color: Theme.of(context).primaryColor,
-              ),
-              CircularMenuItem(
-                onTap: () {
-                  Navigator.of(context).pushNamed(VisitedScreen.routeName);
-                },
-                icon: Icons.remove_red_eye,
-                color: Theme.of(context).primaryColor,
-              ),
-              CircularMenuItem(
-                onTap: () {
-                  Navigator.of(context).pushNamed(WeatherScreen.routeName);
-                },
-                icon: Icons.cloud,
-                color: Theme.of(context).primaryColor,
-              ),
-            ]),
+    return Scaffold(
+      drawer: AppDrawer(),
+      body: CustomScrollView(
+        slivers: [
+          CategoriesBar(),
+          CategoriesBody(),
+        ],
+      ),
+      floatingActionButton: CircularMenu(
+        startingAngleInRadian: 3.2,
+        endingAngleInRadian: 4.5,
+        curve: Curves.linearToEaseOut,
+        reverseCurve: Curves.easeInToLinear,
+        toggleButtonColor: Theme.of(context).primaryColor,
+        alignment: Alignment.bottomRight,
+        items: [
+          CircularMenuItem(
+            onTap: () {
+              Navigator.of(context).pushNamed(FavoriteScreen.routeName);
+            },
+            icon: Icons.favorite,
+            color: Theme.of(context).primaryColor,
+          ),
+          CircularMenuItem(
+            onTap: () {
+              Navigator.of(context).pushNamed(VisitedScreen.routeName);
+            },
+            icon: Icons.remove_red_eye,
+            color: Theme.of(context).primaryColor,
+          ),
+          CircularMenuItem(
+            onTap: () {
+              Navigator.of(context).pushNamed(WeatherScreen.routeName);
+            },
+            icon: Icons.cloud,
+            color: Theme.of(context).primaryColor,
+          ),
+        ],
       ),
     );
   }

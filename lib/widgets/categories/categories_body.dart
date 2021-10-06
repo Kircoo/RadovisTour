@@ -45,7 +45,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                 onTap: () async {
                   await Provider.of<FirebaseProvider>(context, listen: false)
                       .getFireStoreSubCategories(
-                    subCategories: snapshot.data.documents[index]['collection'],
+                    subCategories: snapshot.data.docs[index]['collection'],
                   );
                   await Provider.of<FirebaseProvider>(context, listen: false)
                       .getCurrentFireStreCategoryData(
@@ -65,7 +65,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                   child: Column(
                     children: [
                       Hero(
-                        tag: snapshot.data.documents[index]['catId'],
+                        tag: snapshot.data.docs[index]['catId'],
                         child: Container(
                           height: 100,
                           width: double.infinity,
@@ -81,7 +81,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                               topRight: Radius.circular(20),
                             ),
                             child: Image.network(
-                              snapshot.data.documents[index]['image_url'],
+                              snapshot.data.docs[index]['image_url'],
                               fit: BoxFit.cover,
                               colorBlendMode: BlendMode.darken,
                               loadingBuilder: (BuildContext context,
@@ -104,7 +104,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                         ),
                       ),
                       ListTile(
-                        title: Text(snapshot.data.documents[index]['name']),
+                        title: Text(snapshot.data.docs[index]['name']),
                         trailing: Icon(
                           icons[index],
                           color: Colors.black,
@@ -115,7 +115,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                 ),
               ),
             ),
-            childCount: snapshot.data.documents.length,
+            childCount: snapshot.data.docs.length,
           ),
         );
       },

@@ -76,190 +76,182 @@ class _WeatherScreenState extends State<WeatherScreen>
       context,
       listen: false,
     );
-    return SafeArea(
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Color(0x44000000).withOpacity(0),
-          elevation: 0,
-        ),
-        body: RefreshIndicator(
-          color: Theme.of(context).primaryColor,
-          onRefresh: () {
-            return Navigator.of(context).pushReplacementNamed(WeatherScreen.routeName);
-          },
-          child: Stack(
-            children: [
-              !isConnected
-                  ? Container(
-                      color: Theme.of(context).primaryColor,
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'No internet connection!',
-                              style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Icon(
-                              Icons.signal_wifi_off,
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Color(0x44000000).withOpacity(0),
+        elevation: 0,
+      ),
+      body: RefreshIndicator(
+        color: Theme.of(context).primaryColor,
+        onRefresh: () {
+          return Navigator.of(context)
+              .pushReplacementNamed(WeatherScreen.routeName);
+        },
+        child: Stack(
+          children: [
+            !isConnected
+                ? Container(
+                    color: Theme.of(context).primaryColor,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'No internet connection!',
+                            style: TextStyle(
+                              fontSize: 25,
                               color: Colors.white,
-                              size: 55,
                             ),
-                          ],
-                        ),
+                          ),
+                          Icon(
+                            Icons.signal_wifi_off,
+                            color: Colors.white,
+                            size: 55,
+                          ),
+                        ],
                       ),
-                    )
-                  : FutureBuilder(
-                      future: theItems.getWeather(),
-                      builder: (ctx, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(DateTime.now().hour > 6 &&
-                                        DateTime.now().hour < 18
-                                    ? 'assets/images/weather/day.png'
-                                    : 'assets/images/weather/night.png'),
-                                fit: BoxFit.cover,
+                    ),
+                  )
+                : FutureBuilder(
+                    future: theItems.getWeather(),
+                    builder: (ctx, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(DateTime.now().hour > 6 &&
+                                      DateTime.now().hour < 18
+                                  ? 'assets/images/weather/day.png'
+                                  : 'assets/images/weather/night.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Center(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.5),
+                                shape: BoxShape.circle,
+                              ),
+                              height: 100,
+                              width: 100,
+                              child: SpinKitThreeBounce(
+                                color: Theme.of(context).primaryColor,
+                                size: 50.0,
                               ),
                             ),
-                            child: Center(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.5),
-                                  shape: BoxShape.circle,
-                                ),
-                                height: 100,
-                                width: 100,
-                                child: SpinKitThreeBounce(
-                                  color: Theme.of(context).primaryColor,
-                                  size: 50.0,
+                          ),
+                        );
+                      }
+                      return theItems.noData == 'no Data'
+                          ? Container(
+                              child: Center(
+                                child:
+                                    Text('The Weather is not available now!'),
+                              ),
+                            )
+                          : Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(DateTime.now().hour > 6 &&
+                                          DateTime.now().hour < 18
+                                      ? 'assets/images/weather/day.png'
+                                      : 'assets/images/weather/night.png'),
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                            ),
-                          );
-                        }
-                        return theItems.noData == 'no Data'
-                            ? Container(
-                                child: Center(
-                                  child:
-                                      Text('The Weather is not available now!'),
-                                ),
-                              )
-                            : Container(
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(DateTime.now().hour > 6 &&
-                                            DateTime.now().hour < 18
-                                        ? 'assets/images/weather/day.png'
-                                        : 'assets/images/weather/night.png'),
-                                    fit: BoxFit.cover,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 200,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Icon(Icons.location_on),
+                                              Text('Radovish'),
+                                            ],
+                                          ),
+                                          Text(
+                                            DateFormat.yMMMEd().format(
+                                              DateTime.now(),
+                                            ),
+                                          ),
+                                          Text(DateFormat()
+                                              .add_Hm()
+                                              .format(DateTime.now())
+                                              .toString()),
+                                          WeatherSvg(
+                                            theTemp: theItems.temp != null
+                                                ? '${theItems.temp.toStringAsFixed(0)}°'
+                                                : 'not available',
+                                            imageCode: theItems.weatherIcon,
+                                            weatherDescription:
+                                                theItems.weatherDescription,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      height: 200,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
+                                  Expanded(
+                                    child: SingleChildScrollView(
+                                      child: Container(
                                         child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Icon(Icons.location_on),
-                                                Text('Radovish'),
-                                              ],
-                                            ),
-                                            Text(
-                                              DateFormat.yMMMEd().format(
-                                                DateTime.now(),
-                                              ),
-                                            ),
-                                            Text(DateFormat()
-                                                .add_Hm()
-                                                .format(DateTime.now())
-                                                .toString()),
-                                            WeatherSvg(
+                                            _weatherCard(
+                                              WeatherIcons.thermometer,
+                                              'Temperature',
                                               theItems.temp != null
                                                   ? '${theItems.temp.toStringAsFixed(0)}°'
                                                   : 'not available',
-                                              theItems.weatherCode.toString(),
+                                              Colors.red,
+                                            ),
+                                            _weatherCard(
+                                              WeatherIcons.thermometer_exterior,
+                                              'Feels Like',
+                                              theItems.feelsLike != null
+                                                  ? '${theItems.feelsLike.toStringAsFixed(0)}°'
+                                                  : 'not available',
+                                              Colors.red,
+                                            ),
+                                            _weatherCard(
+                                              WeatherIcons.sunrise,
+                                              'Sunrise',
+                                              '${DateFormat().add_Hm().format(DateTime.fromMillisecondsSinceEpoch(theItems.sunrise * 1000)).toString()}',
+                                              Colors.yellow,
+                                            ),
+                                            _weatherCard(
+                                              WeatherIcons.sunset,
+                                              'Sunset',
+                                              '${DateFormat().add_Hm().format(DateTime.fromMillisecondsSinceEpoch(theItems.sunset * 1000)).toString()}',
+                                              Colors.yellow,
+                                            ),
+                                            _weatherCard(
+                                              WeatherIcons.humidity,
+                                              'Humidity',
+                                              theItems.humidity != null
+                                                  ? '${theItems.humidity.toStringAsFixed(0)}%'
+                                                  : 'not available',
+                                              Colors.blueAccent,
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
-                                    Expanded(
-                                      child: SingleChildScrollView(
-                                        child: Container(
-                                          child: Column(
-                                            children: [
-                                              _weatherCard(
-                                                WeatherIcons.thermometer,
-                                                'Temperature',
-                                                theItems.temp != null
-                                                    ? '${theItems.temp.toStringAsFixed(0)}°'
-                                                    : 'not available',
-                                                Colors.red,
-                                              ),
-                                              _weatherCard(
-                                                WeatherIcons
-                                                    .thermometer_exterior,
-                                                'Feels Like',
-                                                theItems.feelsLike != null
-                                                    ? '${theItems.feelsLike.toStringAsFixed(0)}°'
-                                                    : 'not available',
-                                                Colors.red,
-                                              ),
-                                              _weatherCard(
-                                                WeatherIcons.sunrise,
-                                                'Sunrise',
-                                                '${DateFormat().add_Hm().format(DateTime.parse(theItems.sunrise)).toString()}',
-                                                Colors.yellow,
-                                              ),
-                                              _weatherCard(
-                                                WeatherIcons.sunset,
-                                                'Sunset',
-                                                '${DateFormat().add_Hm().format(DateTime.parse(theItems.sunset)).toString()}',
-                                                Colors.yellow,
-                                              ),
-                                              _weatherCard(
-                                                WeatherIcons.humidity,
-                                                'Humidity',
-                                                theItems.humidity != null
-                                                    ? '${theItems.humidity.toStringAsFixed(0)}%'
-                                                    : 'not available',
-                                                Colors.blueAccent,
-                                              ),
-                                              MoonPhase(
-                                                WeatherIcons
-                                                    .moon_alt_waning_crescent_3,
-                                                'Moon Phase',
-                                                '${theItems.moonPhase.toString()}',
-                                                Colors.brown,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                      },
-                    ),
-              ListView(),
-            ],
-          ),
+                                  ),
+                                ],
+                              ),
+                            );
+                    },
+                  ),
+            ListView(),
+          ],
         ),
       ),
     );

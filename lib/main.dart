@@ -63,9 +63,7 @@ class MyApp extends StatelessWidget {
           },
         ),
       ),
-      home: SafeArea(
-        child: HomePageApp(),
-      ),
+      home: HomePageApp(),
       routes: {
         CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
         SubCategoriesScreen.routeName: (ctx) => SubCategoriesScreen(),

@@ -12,14 +12,12 @@ class AboutScreen extends StatefulWidget {
 class _AboutScreenState extends State<AboutScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            AboutBar(),
-            AboutBody(),
-          ],
-        ),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          AboutBar(),
+          AboutBody(),
+        ],
       ),
     );
   }

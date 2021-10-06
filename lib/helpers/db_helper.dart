@@ -1,4 +1,4 @@
-import 'package:flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 import 'package:path/path.dart' as path;
@@ -52,7 +52,6 @@ class DBS {
       message: '$name is added to $list',
       duration: Duration(seconds: 3),
       flushbarPosition: FlushbarPosition.TOP,
-      borderRadius: 20,
       backgroundColor: Theme.of(context).primaryColor,
       forwardAnimationCurve: Curves.easeInOutCubic,
       reverseAnimationCurve: Curves.easeOutCubic,
@@ -89,7 +88,6 @@ class DBS {
       message: '$name is deleted from $list',
       duration: Duration(seconds: 3),
       flushbarPosition: FlushbarPosition.TOP,
-      borderRadius: 20,
       backgroundColor: Theme.of(context).primaryColor,
       forwardAnimationCurve: Curves.easeInOutCubic,
       reverseAnimationCurve: Curves.easeOutCubic,
