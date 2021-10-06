@@ -64,7 +64,7 @@ class DBS {
 
   static Future<void> delete(
     String table,
-    String id,
+    String? id,
     String name,
     String list,
     BuildContext context,
@@ -98,7 +98,7 @@ class DBS {
     )..show(context);
   }
 
-  static Future<int> countItems(
+  static Future<int?> countItems(
     String table,
   ) async {
     final db = await DBS.database();
@@ -109,7 +109,7 @@ class DBS {
 
   static Future<List<Map<String, dynamic>>> exists(
     String table,
-    String id,
+    String? id,
   ) async {
     final db = await DBS.database();
 

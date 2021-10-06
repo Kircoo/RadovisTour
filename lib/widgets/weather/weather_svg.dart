@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class WeatherSvg extends StatelessWidget {
-  final String theTemp;
-  final String imageCode;
-  final String weatherDescription;
+  final String? theTemp;
+  final String? imageCode;
+  final String? weatherDescription;
 
   WeatherSvg({
     this.theTemp,
@@ -33,13 +33,13 @@ class WeatherSvg extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
-                theTemp,
+                theTemp!,
                 style: TextStyle(fontSize: 40),
               ),
             ),
           ],
         ),
-        Text(allWordsCapitilize(weatherDescription)),
+        Text(allWordsCapitilize(weatherDescription!)),
       ],
     );
   }

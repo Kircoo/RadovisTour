@@ -21,12 +21,12 @@ class _AppDrawerState extends State<AppDrawer> {
     Function function,
     IconData iconData, {
     dynamic lenght,
-    Color color,
+    Color? color,
   }) {
     return Padding(
       padding: const EdgeInsets.all(6.0),
       child: GestureDetector(
-        onTap: function,
+        onTap: function as void Function()?,
         child: Card(
           elevation: 5,
           shape: RoundedRectangleBorder(
@@ -50,11 +50,11 @@ class _AppDrawerState extends State<AppDrawer> {
     );
   }
 
-  int theNumberFav = -1;
-  int theNumberVis = -1;
+  int? theNumberFav = -1;
+  int? theNumberVis = -1;
 
   countFav() async {
-    int count = await DBS.countItems('favorites');
+    int? count = await DBS.countItems('favorites');
     if (mounted) {
       setState(() {
         theNumberFav = count;
@@ -63,7 +63,7 @@ class _AppDrawerState extends State<AppDrawer> {
   }
 
   countVis() async {
-    int count = await DBS.countItems('visited');
+    int? count = await DBS.countItems('visited');
     if (mounted) {
       setState(() {
         theNumberVis = count;
@@ -205,7 +205,7 @@ class _AppDrawerState extends State<AppDrawer> {
                               lenght: CircleAvatar(
                                 radius: 15,
                                 backgroundImage:
-                                    NetworkImage(currentUser.photoURL),
+                                    NetworkImage(currentUser.photoURL!),
                               ),
                             ),
                     ],

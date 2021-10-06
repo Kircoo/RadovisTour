@@ -3,20 +3,20 @@ import 'package:maps_launcher/maps_launcher.dart';
 import 'package:radovis_tour/helpers/db_helper.dart';
 
 class SubItemDetails extends StatefulWidget {
-  final String id;
-  final String name;
-  final String desc;
+  final String? id;
+  final String? name;
+  final String? desc;
   final dynamic lon;
   final dynamic lat;
-  final String imageUrl;
+  final String? imageUrl;
 
   SubItemDetails({
-    @required this.id,
-    @required this.name,
-    @required this.desc,
-    @required this.lon,
-    @required this.lat,
-    @required this.imageUrl,
+    required this.id,
+    required this.name,
+    required this.desc,
+    required this.lon,
+    required this.lat,
+    required this.imageUrl,
   });
 
   @override
@@ -25,10 +25,10 @@ class SubItemDetails extends StatefulWidget {
 
 class _SubItemDetailsState extends State<SubItemDetails> {
   addFavorite(
-    String id,
-    String name,
-    String description,
-    String imageUrl,
+    String? id,
+    String? name,
+    String? description,
+    String? imageUrl,
     dynamic lon,
     dynamic lat,
     String name1,
@@ -54,10 +54,10 @@ class _SubItemDetailsState extends State<SubItemDetails> {
   }
 
   addVisited(
-    String id,
-    String name,
-    String description,
-    String imageUrl,
+    String? id,
+    String? name,
+    String? description,
+    String? imageUrl,
     dynamic lon,
     dynamic lat,
     String name1,
@@ -88,7 +88,7 @@ class _SubItemDetailsState extends State<SubItemDetails> {
 
   void ifExistsFav(
     String table,
-    String id,
+    String? id,
   ) async {
     var exists = await DBS.exists(table, id);
     setState(() {
@@ -103,7 +103,7 @@ class _SubItemDetailsState extends State<SubItemDetails> {
 
   void ifExistsVis(
     String table,
-    String id,
+    String? id,
   ) async {
     var exists = await DBS.exists(table, id);
     setState(() {
@@ -141,7 +141,7 @@ class _SubItemDetailsState extends State<SubItemDetails> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(widget.desc),
+              child: Text(widget.desc!),
             ),
             Expanded(
               child: Row(

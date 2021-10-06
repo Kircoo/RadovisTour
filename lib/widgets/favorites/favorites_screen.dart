@@ -100,7 +100,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                               ),
                               child: ListTile(
                                 title: Text(
-                                  favoritesList[index].name,
+                                  favoritesList[index].name!,
                                 ),
                                 trailing: Builder(
                                   builder: (context) => IconButton(

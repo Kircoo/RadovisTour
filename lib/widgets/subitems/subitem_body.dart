@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_details.dart';
 
 class SubItemBody extends StatefulWidget {
-  final String id;
-  final String name;
-  final String desc;
+  final String? id;
+  final String? name;
+  final String? desc;
   final dynamic lon;
   final dynamic lat;
-  final String imageUrl;
+  final String? imageUrl;
 
   SubItemBody({
-    @required this.id,
-    @required this.name,
-    @required this.desc,
-    @required this.lon,
-    @required this.lat,
-    @required this.imageUrl,
+    required this.id,
+    required this.name,
+    required this.desc,
+    required this.lon,
+    required this.lat,
+    required this.imageUrl,
   });
   @override
   _SubItemBodyState createState() => _SubItemBodyState();

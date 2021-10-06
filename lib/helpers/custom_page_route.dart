@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class CustomRoute<T> extends MaterialPageRoute<T> {
   CustomRoute({
-    WidgetBuilder builder,
-    RouteSettings settings,
+    required WidgetBuilder builder,
+    RouteSettings? settings,
   }) : super(
           builder: builder,
           settings: settings,
@@ -16,7 +16,7 @@ class CustomRoute<T> extends MaterialPageRoute<T> {
     Animation<double> secondaryAnimation,
     Widget child,
   ) {
-    if (settings.arguments) {
+    if (settings.arguments as bool) {
       return child;
     }
     return FadeTransition(

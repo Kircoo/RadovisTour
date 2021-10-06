@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class SubItemBar extends StatefulWidget {
   final dynamic id;
-  final String name;
-  final String imageUrl;
+  final String? name;
+  final String? imageUrl;
 
   SubItemBar({
-    @required this.id,
-    @required this.name,
-    @required this.imageUrl,
+    required this.id,
+    required this.name,
+    required this.imageUrl,
   });
   @override
   _SubItemBarState createState() => _SubItemBarState();
@@ -33,7 +33,7 @@ class _SubItemBarState extends State<SubItemBar> {
                 ),
                 image: DecorationImage(
                   image: NetworkImage(
-                    widget.imageUrl,
+                    widget.imageUrl!,
                   ),
                   colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.3),
@@ -51,7 +51,7 @@ class _SubItemBarState extends State<SubItemBar> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Text(
-                widget.name,
+                widget.name!,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 25,

@@ -9,7 +9,7 @@ class AboutItemBar extends StatefulWidget {
 class _AboutItemBarState extends State<AboutItemBar> {
   @override
   Widget build(BuildContext context) {
-    final aboutItem = ModalRoute.of(context).settings.arguments as String;
+    final aboutItem = ModalRoute.of(context)!.settings.arguments as String?;
     final selectedAboutItem =
         aboutList.firstWhere((subItem) => subItem.id == aboutItem);
     return SliverAppBar(

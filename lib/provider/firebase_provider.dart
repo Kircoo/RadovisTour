@@ -5,12 +5,12 @@ import 'package:radovis_tour/models/fb_sub_model.dart';
 
 class FirebaseProvider with ChangeNotifier {
   List<QueryDocumentSnapshot> subCats = [];
-  var currentCategory;
+  late var currentCategory;
   FbItem currentItem = FbItem();
   Set<Marker> mark = {};
 
   // GET THE CURRENT SELECTED ITEM ALL THE DETAILS
-  Future<FbItem> getCurrentItem({
+  Future<FbItem>? getCurrentItem({
     var name,
     var description,
     var lon,
@@ -35,8 +35,8 @@ class FirebaseProvider with ChangeNotifier {
   }
 
   // GET THE MAIN CATEGORIES FROM FIREBASE
-  Future<void> getFireStoreCategories({
-    var categories,
+  Future<QuerySnapshot<Object?>>? getFireStoreCategories({
+    required var categories,
   }) {
     return FirebaseFirestore.instance
         .collection(categories)
@@ -46,7 +46,7 @@ class FirebaseProvider with ChangeNotifier {
 
   // GET THE CURRENT SUBCATEGORIES FROM SELECTED CATEGORY
   Future<void> getCurrentFireStreCategoryData({
-    var categories,
+    required var categories,
     var index,
   }) {
     final items = FirebaseFirestore.instance
@@ -62,7 +62,7 @@ class FirebaseProvider with ChangeNotifier {
 
   // GET THE SUBCATEGORIES FROM FIREBASE
   Future<void> getFireStoreSubCategories({
-    var subCategories,
+    required var subCategories,
   }) {
     final items =
         FirebaseFirestore.instance.collectionGroup(subCategories).get();

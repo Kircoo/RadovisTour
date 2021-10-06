@@ -5,7 +5,7 @@ import 'package:radovis_tour/provider/firebase_provider.dart';
 import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
 
 class SubCategoryBody extends StatefulWidget {
-  final List<dynamic> fireSubList;
+  final List<dynamic>? fireSubList;
 
   SubCategoryBody({
     this.fireSubList,
@@ -17,7 +17,7 @@ class SubCategoryBody extends StatefulWidget {
 
 class _SubCategoryBodyState extends State<SubCategoryBody> {
   int selectedPage = 0;
-  PageController _pageController;
+  PageController? _pageController;
 
   @override
   void initState() {
@@ -40,22 +40,22 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
       },
       itemBuilder: (ctx, index) => _items(
         index,
-        widget.fireSubList,
+        widget.fireSubList as List<QueryDocumentSnapshot<Object>>?,
       ),
-      itemCount: widget.fireSubList.length,
+      itemCount: widget.fireSubList!.length,
     );
   }
 
   Widget _items(
     int index,
-    List<QueryDocumentSnapshot> fireSubList,
+    List<QueryDocumentSnapshot>? fireSubList,
   ) {
     return AnimatedBuilder(
-      animation: _pageController,
+      animation: _pageController!,
       builder: (ctx, widget) {
         double value = 1;
-        if (_pageController.position.haveDimensions) {
-          value = _pageController.page - index;
+        if (_pageController!.position.haveDimensions) {
+          value = _pageController!.page! - index;
           value = (1 - (value.abs() * 0.2)).clamp(0.0, 1);
         }
 
@@ -68,7 +68,7 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                   onTap: () async {
                     await Provider.of<FirebaseProvider>(context, listen: false)
                         .getCurrentItem(
-                      name: fireSubList[index]['name'],
+                      name: fireSubList![index]['name'],
                       description: fireSubList[index]['description'],
                       lat: fireSubList[index]['lat'],
                       lon: fireSubList[index]['lon'],
@@ -81,7 +81,7 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                   child: Stack(
                     children: [
                       Hero(
-                        tag: fireSubList[index].id,
+                        tag: fireSubList![index].id,
                         child: Container(
                           height: Curves.easeInOut.transform(value) *
                               MediaQuery.of(context).size.height *
@@ -112,7 +112,7 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                                     colorBlendMode: BlendMode.darken,
                                     loadingBuilder: (BuildContext context,
                                         Widget child,
-                                        ImageChunkEvent loadingProgress) {
+                                        ImageChunkEvent? loadingProgress) {
                                       if (loadingProgress == null) return child;
                                       return Center(
                                         child: CircularProgressIndicator(
@@ -122,7 +122,7 @@ class _SubCategoryBodyState extends State<SubCategoryBody> {
                                               ? loadingProgress
                                                       .cumulativeBytesLoaded /
                                                   loadingProgress
-                                                      .expectedTotalBytes
+                                                      .expectedTotalBytes!
                                               : null,
                                         ),
                                       );

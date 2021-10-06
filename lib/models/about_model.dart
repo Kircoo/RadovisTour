@@ -7,9 +7,9 @@ class About {
   IconData icon;
 
   About({
-    @required this.id,
-    @required this.name,
-    @required this.desc,
-    @required this.icon,
+    required this.id,
+    required this.name,
+    required this.desc,
+    required this.icon,
   });
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:radovis_tour/provider/firebase_provider.dart';
@@ -20,7 +21,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    return FutureBuilder<QuerySnapshot>(
       future: Provider.of<FirebaseProvider>(context, listen: false)
           .getFireStoreCategories(categories: 'categories'),
       builder: (ctx, snapshot) {
@@ -45,7 +46,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                 onTap: () async {
                   await Provider.of<FirebaseProvider>(context, listen: false)
                       .getFireStoreSubCategories(
-                    subCategories: snapshot.data.docs[index]['collection'],
+                    subCategories: snapshot.data!.docs[index]['collection'],
                   );
                   await Provider.of<FirebaseProvider>(context, listen: false)
                       .getCurrentFireStreCategoryData(
@@ -65,7 +66,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                   child: Column(
                     children: [
                       Hero(
-                        tag: snapshot.data.docs[index]['catId'],
+                        tag: snapshot.data!.docs[index]['catId'],
                         child: Container(
                           height: 100,
                           width: double.infinity,
@@ -81,12 +82,12 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                               topRight: Radius.circular(20),
                             ),
                             child: Image.network(
-                              snapshot.data.docs[index]['image_url'],
+                              snapshot.data!.docs[index]['image_url'],
                               fit: BoxFit.cover,
                               colorBlendMode: BlendMode.darken,
                               loadingBuilder: (BuildContext context,
                                   Widget child,
-                                  ImageChunkEvent loadingProgress) {
+                                  ImageChunkEvent? loadingProgress) {
                                 if (loadingProgress == null) return child;
                                 return Center(
                                   child: CircularProgressIndicator(
@@ -94,7 +95,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                                             null
                                         ? loadingProgress
                                                 .cumulativeBytesLoaded /
-                                            loadingProgress.expectedTotalBytes
+                                            loadingProgress.expectedTotalBytes!
                                         : null,
                                   ),
                                 );
@@ -104,7 +105,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                         ),
                       ),
                       ListTile(
-                        title: Text(snapshot.data.docs[index]['name']),
+                        title: Text(snapshot.data!.docs[index]['name']),
                         trailing: Icon(
                           icons[index],
                           color: Colors.black,
@@ -115,7 +116,7 @@ class _CategoriesBodyState extends State<CategoriesBody> {
                 ),
               ),
             ),
-            childCount: snapshot.data.docs.length,
+            childCount: snapshot.data!.docs.length,
           ),
         );
       },

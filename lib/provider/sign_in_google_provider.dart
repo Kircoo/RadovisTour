@@ -5,20 +5,20 @@ import 'package:google_sign_in/google_sign_in.dart';
 class SignInGoogleProvider with ChangeNotifier {
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final currentUser = FirebaseAuth.instance.currentUser;
-  bool _isSignedIn;
+  bool? _isSignedIn;
 
   SignInGoogleProvider() {
     _isSignedIn = false;
   }
 
-  bool get isSignedIn => _isSignedIn;
+  bool? get isSignedIn => _isSignedIn;
 
-  set isSignedIn(bool isSignedIn) {
+  set isSignedIn(bool? isSignedIn) {
     _isSignedIn = isSignedIn;
     notifyListeners();
   }
 
-  Future<GoogleSignInAccount> signInWithGoogle() async {
+  Future<GoogleSignInAccount?> signInWithGoogle() async {
     isSignedIn = true;
 
     final user = await googleSignIn.signIn();

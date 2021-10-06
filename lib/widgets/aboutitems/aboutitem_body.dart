@@ -9,7 +9,7 @@ class AboutItemBody extends StatefulWidget {
 class _AboutItemBodyState extends State<AboutItemBody> {
   @override
   Widget build(BuildContext context) {
-    final aboutItem = ModalRoute.of(context).settings.arguments as String;
+    final aboutItem = ModalRoute.of(context)!.settings.arguments as String?;
     final selectedAboutItem =
         aboutList.firstWhere((item) => item.id == aboutItem);
     return SliverFillRemaining(

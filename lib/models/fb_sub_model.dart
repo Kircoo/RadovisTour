@@ -1,10 +1,10 @@
 class FbItem {
-  String id;
-  String name;
-  String description;
+  String? id;
+  String? name;
+  String? description;
   var lon;
   var lat;
-  String imageUrl;
+  String? imageUrl;
 
   FbItem({
     this.id,

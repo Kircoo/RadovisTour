@@ -99,7 +99,7 @@ class _VisitedScreenState extends State<VisitedScreen> {
                               ),
                               child: ListTile(
                                 title: Text(
-                                  visitedList[index].name,
+                                  visitedList[index].name!,
                                 ),
                                 trailing: Builder(
                                   builder: (context) => IconButton(

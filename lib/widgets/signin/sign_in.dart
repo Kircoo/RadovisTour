@@ -19,7 +19,7 @@ class _SignInUserState extends State<SignInUser> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (ctx, snapshot) {
           final isSignedIn = Provider.of<SignInGoogleProvider>(context);
-          if (isSignedIn.isSignedIn) {
+          if (isSignedIn.isSignedIn!) {
             return WaitingScreen();
           } else if (snapshot.hasData) {
             return CategoriesScreen();
