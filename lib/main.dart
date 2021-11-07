@@ -2,22 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'package:radovis_tour/helpers/custom_page_route.dart';
+import 'package:radovis_tour/provider/data_provider.dart';
 import 'package:radovis_tour/provider/firebase_provider.dart';
 import 'package:radovis_tour/provider/sign_in_google_provider.dart';
-import 'package:radovis_tour/widgets/map/maps.dart';
-import 'package:provider/provider.dart';
-import 'package:radovis_tour/provider/data_provider.dart';
 import 'package:radovis_tour/provider/weather_provider.dart';
-import 'package:radovis_tour/widgets/about/about_screen.dart';
-import 'package:radovis_tour/widgets/aboutitems/aboutitem_screen.dart';
-import 'package:radovis_tour/widgets/categories/categories_screen.dart';
-import 'package:radovis_tour/helpers/custom_page_route.dart';
-import 'package:radovis_tour/widgets/favorites/favorites_screen.dart';
+import 'package:radovis_tour/routes.dart';
 import 'package:radovis_tour/widgets/signin/sign_in.dart';
-import 'package:radovis_tour/widgets/subcategories/subcategories_screen.dart';
-import 'package:radovis_tour/widgets/subitems/subitem_screen.dart';
-import 'package:radovis_tour/widgets/visited/visited_screen.dart';
-import 'package:radovis_tour/widgets/weather/weather_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +39,33 @@ void main() async {
 }
 
 /// Class To Run
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+//   @override
+//   void initState() {
+//     //Remove this method to stop OneSignal Debugging
+//     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+
+//     OneSignal.shared.setAppId("9fac016c-0b2d-4d29-b4b3-d9498ce2d528");
+
+// // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
+//     OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
+//       print("Accepted permission: $accepted");
+//     });
+
+//     OneSignal.shared.setNotificationWillShowInForegroundHandler(
+//         (OSNotificationReceivedEvent event) {
+//       // Will be called whenever a notification is received in foreground
+//       // Display Notification, pass null param for not displaying the notification
+//       event.complete(event.notification);
+//     });
+//     super.initState();
+//   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,18 +83,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: HomePageApp(),
-      routes: {
-        CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
-        SubCategoriesScreen.routeName: (ctx) => SubCategoriesScreen(),
-        SubItemScreen.routeName: (ctx) => SubItemScreen(),
-        AboutScreen.routeName: (ctx) => AboutScreen(),
-        AboutItemScreen.routeName: (ctx) => AboutItemScreen(),
-        FavoriteScreen.routeName: (ctx) => FavoriteScreen(),
-        VisitedScreen.routeName: (ctx) => VisitedScreen(),
-        WeatherScreen.routeName: (ctx) => WeatherScreen(),
-        RadovisMaps.routeName: (ctx) => RadovisMaps(),
-        SignInUser.routeName: (ctx) => SignInUser(),
-      },
+      routes: routes,
     );
   }
 }
