@@ -10,6 +10,9 @@ import GoogleMaps
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     FirebaseApp.configure()
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+    }
     GMSServices.provideAPIKey("AIzaSyCfJ7DgbXkfCd_Ihvr5Jh89YSOWOLnGCuo")
     var flutter_native_splash = 1
     UIApplication.shared.isStatusBarHidden = false

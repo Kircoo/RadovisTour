@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -12,9 +14,61 @@ import 'package:radovis_tour/provider/weather_provider.dart';
 import 'package:radovis_tour/routes.dart';
 import 'package:radovis_tour/widgets/signin/sign_in.dart';
 
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+  'high_important_channel',
+  'high importance notifications',
+  description: 'high channel is used for important notifications!',
+  importance: Importance.max,
+  playSound: true,
+);
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('A bg message just showed up!: ${message.data}');
+  if (message.data.isNotEmpty) {
+    return flutterLocalNotificationsPlugin.show(
+      0,
+      message.data['name'],
+      message.data['surname'],
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          channel.id,
+          channel.name,
+          channelDescription: channel.description,
+          color: Colors.blue,
+          playSound: true,
+        ),
+      ),
+    );
+  }
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+
+  var androidInint = new AndroidInitializationSettings('splash');
+  var iosInit = new IOSInitializationSettings();
+  flutterLocalNotificationsPlugin.initialize(
+    InitializationSettings(
+      android: androidInint,
+      iOS: iosInit,
+    ),
+  );
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (value) => runApp(
       MultiProvider(
@@ -45,6 +99,36 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  void pushFCMtoken() async {
+    String? token = await messaging.getToken();
+    print(token);
+  }
+
+  @override
+  void initState() {
+    pushFCMtoken();
+    FirebaseMessaging.onMessage.listen((message) {
+      if (message.data.isNotEmpty) {
+        flutterLocalNotificationsPlugin.show(
+          0,
+          message.data['name'],
+          message.data['surname'],
+          NotificationDetails(
+            android: AndroidNotificationDetails(
+              channel.id,
+              channel.name,
+              channelDescription: channel.description,
+              color: Colors.blue,
+              playSound: true,
+            ),
+          ),
+        );
+      }
+    });
+    super.initState();
+  }
+
 //   @override
 //   void initState() {
 //     //Remove this method to stop OneSignal Debugging

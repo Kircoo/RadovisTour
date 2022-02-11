@@ -46,6 +46,7 @@ dependencies:
   url_launcher: ^6.0.12
   weather_icons: ^3.0.0
   another_flushbar: ^1.10.24
+  flutter_local_notifications: ^9.1.4
   # onesignal_flutter: ^3.2.3
 
 dev_dependencies:

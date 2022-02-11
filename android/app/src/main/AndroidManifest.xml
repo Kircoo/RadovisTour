@@ -11,14 +11,18 @@
         android:label="Radovish Tour"
         android:icon="@mipmap/launcher_icon">
       <meta-data android:name="com.google.android.geo.API_KEY"
-              android:value="AIzaSyALQIo6ynb6rrxw7P9JksW5abwDBEWtwoY"/>
+                 android:value="AIzaSyALQIo6ynb6rrxw7P9JksW5abwDBEWtwoY"/>
+      <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id"
+                 android:value="high_important_channel"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
